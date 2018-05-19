@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取微博信息</title>
+	<style>
+		.datalist{margin:0 auto;line-height:2;}
+		.datalist li{position:relative;border-bottom:1px dotted #ddd;padding-right:100px;}
+		.datalist li span{position:absolute;right:0;top:0;margin:0 5px;padding:2px 5px 2px 20px;background:skyblue url(icon/com.svg) no-repeat 5px center;background-size:20px;border-radius: 5px;width:30px;text-align:center;color:#fff;}
+		.datalist li span.like{right:70px;background-image:url(icon/zan.svg);background-color:orange;}
+
+	</style>
+	<script>
+	document.addEventListener('DOMContentLoaded',()=>{
+		var datalist = document.querySelector('.datalist');
+
+		var xhr = new XMLHttpRequest();
+
+		// 接收数据
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4 && xhr.status === 200){
+				var res = JSON.parse(xhr.responseText);
+			
+				// 遍历数据，并写入页面
+				var ul = document.createElement('ul');
+
+				ul.innerHTML = res.map(item => {
+					return `<li data-id="${item.id}">
+							<h4>${item.username}</h4>
+							<p>${item.content}</p>
+							<span>${item.comtcnt}</span>
+							<span class="like">${item.likecnt}</span>
+							</li>`
+				}).join('');
+				
+				datalist.appendChild(ul);
+			}
+		}
+
+		// 建立连接
+		xhr.open('get','../data/weibo.json',true);
+
+		// 发送
+		xhr.send();
+
+
+		datalist.onclick = function(e){
+			if(e.target.className = 'like'){
+				var currentLi = e.target.parentNode;
+				var id = currentLi.dataset.id;
+				var xhr = new XMLHttpRequest();
+				var states = [200,304];
+
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState === 4 && states.indexOf(xhr.status)>=0){
+						var res = JSON.parse(xhr.responseText);console.log(res);
+						e.target.innerHTML = res.likecnt;
+					}
+				}
+
+				xhr.open("get","../api/weibo.php?id=" + id,true);
+				xhr.send();
+			}
+
+
+			
+		}
+
+
+
+	})
+		
+	</script>
+</head>
+<body>
+	<div class="datalist">
+		
+	</div>
+</body>
+</html>

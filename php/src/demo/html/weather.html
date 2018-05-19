@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        ul{list-style: none;margin:0;padding:0;}
+        .weather ul{overflow:hidden;}
+        .weather li{float: left;margin:10px;padding:10px;width:160px;border:2px solid #ddd;}
+        #mymap{width:800px;height:500px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x4RLsqK9mFnB0Vf3QiNLvSMAVmuhWqPe"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var city = document.querySelector('#city');
+            var weather = document.querySelector('.weather');
+            var mymap = document.querySelector('#mymap');
+
+            var xhr = new XMLHttpRequest();
+            var status = [200,304];
+            xhr.onload = function(){
+                if(status.indexOf(xhr.status)>=0){
+                    var res = JSON.parse(xhr.responseText);console.log(res)
+                    var title = document.createElement('h2');
+                    title.innerHTML = res.data.city + "天气预报";
+                    var tips = document.createElement('p');
+                    tips.innerHTML = res.data.ganmao;
+                    var ul = document.createElement('ul');
+                    ul.innerHTML = res.data.forecast.map(function(item){
+                        return `<li>
+                                <h4>${item.date}</h4>
+                                <p>${item.high}/${item.low}</p>
+                                <p>${item.type}</p>
+                        </li>`
+                    }).join('');
+
+                    weather.innerHTML = '';
+                    weather.appendChild(title);
+                    weather.appendChild(tips);
+                    weather.appendChild(ul);
+                }
+            }
+            xhr.open("get","http://wthrcdn.etouch.cn/weather_mini?city=广州");
+            xhr.send();
+
+            city.onblur = function(){
+                var _city = city.value.trim();
+                if(_city.length===0){
+                    return false;
+                }
+                xhr.open("get","http://wthrcdn.etouch.cn/weather_mini?city="+_city);
+                xhr.send();  
+                map.centerAndZoom(_city,19);
+            }
+
+            var map = new BMap.Map("mymap");
+            map.centerAndZoom('广州', 19);
+            map.setCurrentCity("广州");
+            map.enableScrollWheelZoom(true);  
+        })
+
+    </script>
+</head>
+<body>
+    <input type="text" id="city" placeholder="输入城市">
+    <div class="weather"></div>
+    <div id="mymap"></div>
+</body>
+</html>

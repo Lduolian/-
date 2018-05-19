@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name":"iponeX",
+        "color":"黑色",
+        "RAM":64
+    },
+    {
+        "id":2,
+        "name":"iponeXX",
+        "color":"白色",
+        "RAM":256
+    },
+    {
+        "id":3,
+        "name":"iponeXXX",
+        "color":"粉色",
+        "RAM":526
+    }
+]

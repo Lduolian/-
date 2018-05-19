@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var promise = new Promise(function(resolve,reject){
+            console.log('promise');
+            // resolve();
+            reject();
+            console.log(666);
+            
+        })
+        // promise.then(function(){
+        //     console.log("我后执行");
+        // },function(){
+        //     console.log("error");
+        // })
+        promise.catch(function(){
+            console.log("error");
+        })
+        console.log("我先执行");
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

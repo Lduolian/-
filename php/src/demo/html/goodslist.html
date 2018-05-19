@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var list = document.querySelector('.list');
+            var xhr = new XMLHttpRequest();
+            var status = [200,304];
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState===4&&status.indexOf(xhr.status)>=0){
+                    var goodslist = JSON.parse(xhr.responseText);
+                    console.log(goodslist);
+                    var ul = document.createElement('ul');
+                    ul.innerHTML = goodslist.map(item=>{
+                        return `<li>
+                                <p>id:${item.id}</p>
+                                <p>name:${item.name}</p>
+                                <p>color:${item.color}</p>
+                                <p>RAM:${item.RAM}</p>
+                            </li>`
+                    }).join('');
+                    list.appendChild(ul);
+                }
+            }
+            xhr.open("get","../data/goodslist.json");
+            xhr.send();
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="list"></div>
+</body>
+</html>

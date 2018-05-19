@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>从数据库测试读取图片</title>
+    <script type="text/javascript" src='../js/common.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var output  = document.querySelector('.output');
+            ajax({
+                url:'../api/pic.php',
+                success:function(data){
+                    // data = JSON.parse(data);
+                    console.log(data);
+                    output.src=data.img;
+                }
+            })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <img class="output"></img>
+</body>
+</html>

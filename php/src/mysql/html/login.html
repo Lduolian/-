@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src='../js/common.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var username = document.querySelector('#username');
+            var password = document.querySelector('#password');
+            var btn = document.querySelector('.btn');
+
+            btn.onclick = function(){
+                var _username = username.value;
+                var _password = password.value;
+                if(_username.length===0 || _password.length === 0){
+                    alert("用户名和密码不能为空");
+                    
+                    return false;
+                }else{
+                    ajax({
+                        url:'../api/login.php',
+                        data:{username:_username,password:_password},
+                        success:function(data){
+                            if(data === 'fail'){
+                                alert("请重新登录");
+                            }else{
+                                
+                                var str = data.username;
+                                location.href='success.html?username='+str;
+                            }
+                        }
+                    })
+                }
+                
+            }
+            
+        
+        })
+        
+    </script>
+</head>
+<body>
+    
+    <label for="username">用户名</label>
+    <input type="text" id='username'/><br />
+    <label for="password">密码</label>
+    <input type="text" id='password'/><br />
+    <button class='btn'>登录</button>
+    
+</body>
+</html>

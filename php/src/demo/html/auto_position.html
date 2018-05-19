@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var xhr_ip = new XMLHttpRequest();
+        var status = [200,304];
+        xhr_ip.onload = function(){
+            if(status.includes(xhr_ip.status)){
+                var ip = xhr_ip.responseText;
+
+                var xhr_city = new XMLHttpRequest();
+                xhr_city.onload = function(){
+                    if(status.includes(xhr_city.status)){
+                        var city = xhr_city.responseText;
+                        console.log(city);
+                    }
+                }
+                // xhr_city.open("get","../api/get_city.php?id=" + ip);
+                // xhr_city.send();
+                
+                xhr_city.open("post","../api/get_city.php");
+                xhr_city.send(ip);
+            }
+        }
+        xhr_ip.open("get","../api/proxy.php");
+        xhr_ip.send();
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

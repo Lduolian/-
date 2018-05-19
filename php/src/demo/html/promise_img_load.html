@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        let preloadImage = path =>{
+            return new Promise((resolve,reject)=>{
+                let img = new Image();
+                img.onload = ()=>{
+                    resolve(img);
+                }
+                img.onerror = reject;
+                img.src=path;
+            })
+        }
+
+        preloadImage("http://d.hiphotos.baidu.com/image/pic/item/b3b7d0a20cf431ad184ee53e4736acaf2edd981d.jpg").then(img =>{
+            document.body.appendChild(img);
+            console.log(img.offsetHeight,img.offsetWidth);
+        }).catch(()=>{
+            console.log("获取图片失败");
+        })
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        var status = [200,304];
+        xhr.onload = function(){
+            if(status.includes(xhr.status)){
+                var ip = xhr.responseText;
+                console.log(ip);
+            }
+            
+        }
+        xhr.open("get","../api/proxy.php");
+        xhr.send();
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

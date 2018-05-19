@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<script type="text/javascript" src='js/common.js'></script>
+
+<script type="text/javascript">
+   
+
+    function show(n){
+        // console.log("age" + n.age + 'name' + n.name);
+        console.log("show test",n);
+        
+    }
+
+    
+    ajax({
+        type:'jsonp',
+        url:'http://localhost:1000/jsonp.php',
+        callbackName:'myname',
+        data:{username:'lili'},
+        success:function(data){
+            console.log(data);
+        }
+    })
+</script>
+<body>
+    
+</body>
+</html>

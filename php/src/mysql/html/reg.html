@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var username = document.querySelector('#username');
+            var password = document.querySelector('#password');
+            var group = username.parentNode;
+            var txt = username.nextElementSibling;
+            var btn = document.querySelector('.btn');
+
+            username.onblur = function(){
+                var _username = username.value;
+                ajax({
+                    url:'../api/reg.php',
+                    data:{username:_username},
+                    success:function(data){
+                        if(data==='success'){
+                            group.classList.remove('has-error');
+                            group.classList.add('has-success');
+                            txt.innerHTML = '';
+                        }else{
+                            group.classList.remove('has-success');
+                            group.classList.add('has-error');
+                            txt.innerHTML = _username + ' 这个用户太受欢迎了';
+                        }
+                    }
+                });
+            }
+
+            btn.onclick = function(){
+                var _username = username.value;
+                var _password = password.value;
+                ajax({
+                    url:'../api/reg.php',
+                    data:{username:_username,password:_password,type:'reg'},
+                    success:function(data){
+                        console.log(data);
+                    }
+                })
+            }
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>注册</h1>
+        <div class="form-group">
+            <label for="username">用户名：</label>
+            <input type="text" name="username" id="username" class="form-control">
+            <div class="help-block"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">密码：</label>
+            <input type="password" name="password" id="password" class="form-control">
+        </div>
+        <button class="btn btn-success btnReg">注册</button>
+    </div>
+</body>
+</html>

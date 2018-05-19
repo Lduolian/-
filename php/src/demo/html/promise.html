@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var status = [200,304];
+
+        function fun(){
+            return new Promise(function(resolve,reject){
+                var xhr_ip = new XMLHttpRequest();
+                xhr_ip.onload = function(){
+                    if(status.includes(xhr_ip.status)){
+                        var ip = xhr_ip.responseText;
+                        resolve(ip);
+                    }
+                }
+                xhr_ip.open("get","../api/proxy.php",true);
+                xhr_ip.send();
+            })
+        }
+        
+        fun().then(function(ip){
+            console.log(ip);
+
+            return new Promise((resolve,reject)=>{
+                var xhr_city = new XMLHttpRequest();
+
+                xhr_city.onload = function(){
+                    if(status.includes(xhr_city.status)){
+                        var city = xhr_city.responseText;
+                        resolve(city);
+                    }
+                }
+                xhr_city.open("post","../api/get_city.php",true);
+
+                xhr_city.setRequestHeader('Content-Type','application/x-www-form-urlencode');
+                xhr_city.send(ip);
+            })
+
+        },function(){
+            console.log("获取ip失败");
+        })
+
+        .then(function(city){
+            console.log(city);
+
+            return new Promise((resolve,reject)=>{
+                var xhr_weather = new XMLHttpRequest();
+                xhr_weather.onload = function(){
+                    if(status.includes(xhr_weather.status)){
+                        var weather = JSON.parse(xhr_weather.responseText);
+                        resolve(weather);
+                    }
+                }
+                xhr_weather.open("get","http://wthrcdn.etouch.cn/weather_mini?city="+city,true);
+                xhr_weather.send();
+            })
+        },function(){
+            console.log('获取城市失败');
+        })
+
+
+        .then(function(weather){
+            console.log(weather);
+        }).catch(function(){
+            console.log("获取天气失败");
+        })
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

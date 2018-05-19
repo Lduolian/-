@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        .datalist{margin:0 auto;line-height:2;}
+        .datalist li{position:relative;border-bottom:1px dotted #ddd;padding-right:100px;}
+        .datalist li span{position:absolute;right:0;top:0;margin:0 5px;padding:2px 5px 2px 20px;background:skyblue url(../icon/com.svg) no-repeat 5px center;background-size:20px;border-radius: 5px;width:30px;text-align:center;color:#fff;}
+        .datalist li span.like{right:70px;background-image:url(../icon/zan.svg);background-color:orange;}
+
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var datalist = document.querySelector('.datalist');
+            var xhr = new XMLHttpRequest();
+            var status = [200,304];
+            xhr.onload = function(){
+                if(status.includes(xhr.status)){
+                    var res = JSON.parse(xhr.responseText);
+                    console.log(res);
+                    var ul = document.createElement('ul');
+                    ul.innerHTML = res.map(item=>{
+                        return `<li data-id="${item.id}">
+                                <h4>${item.username}</h4>
+                                <p>${item.content}</p>
+                                <span>${item.comtcnt}</span>
+                                <span class="like">${item.likecnt}</span>
+                        </li>`
+                    }).join('');
+                    datalist.innerHTML = ''
+                    datalist.appendChild(ul);
+                }
+            }
+            xhr.open("get","../data/weibo.json",true);
+            xhr.send();
+            
+            datalist.onclick = function(e){
+                if(e.target.className === 'like'){
+                    currentLi = e.target.parentNode;
+                    var id = currentLi.dataset.id;
+
+                    xhr.onload = function(){
+                        if(xhr.readyState===4){
+                            var txt = JSON.parse(xhr.responseText);
+                            console.log(txt);
+                            e.target.innerHTML = txt.likecnt;
+                        }
+                        
+                    }
+                    xhr.open("get","../api/weibo.php?id="+id);
+                    xhr.send();
+                }
+            }
+
+
+
+        })
+
+    </script>
+</head>
+<body>
+    <div class="datalist">
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				ajax
+					* 发起一个ajax请求
+						1) new XMLHttpRequest()
+						4) onreadystatechange
+						2) open(type,url,async)
+						3) send()
+			
+					*接受数据属性
+						* responseText
+			 */
+			
+			let goodslist = document.querySelector('.goodslist');
+			
+
+			// 创建一个异步请求对象{}
+			let xhr = new XMLHttpRequest();//readySate=0
+
+			// 当数据返回时触发
+			xhr.onreadystatechange = function(){
+				// 3：接受数据（未接受完毕）
+				// 4：数据接受完毕
+				// console.log(xhr.readyState)
+				if(xhr.readyState === 4){
+					let data = JSON.parse(xhr.responseText)
+					console.log(data);
+
+					goodslist.innerHTML = data.map(item=>{
+						return `
+							<li data-id="${item.id}">
+								<img src="${item.imgurl}">
+								<h4>${item.title}</h4>
+								<p class="color">颜色：${item.color}</p>
+								<p class="price">价格：${item.price}</p>
+								<p class="rom">容量：${item.rom}</p>
+							</li>
+						`
+					}).join('')
+				}
+			}
+
+			// 配置参数，建立与服务器的连接
+			// get,post,put,delete
+			xhr.open('get','http://localhost:1801/data/goodslist.json',true);//readySate=1
+
+			// 发起请求
+			xhr.send();//readyState=2
+
+
+			
+		})
+	</script>
+</head>
+<body>
+	<h2>商品列表</h2>
+	<div class="goodslist">
+		
+	</div>
+</body>
+</html>
