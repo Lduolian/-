@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src="../../comment.js"></script>
+    <script type="text/javascript">
+    /*
+      思路：1.Math.random()*max+min:假设Math.random()=0,得到最小值min
+            2.Math.random()*(max-min)+min:假设Math.random()=1,相当于
+            1*(max-min)+min,抵消之后得到max，但是Math.random()不可能为1，
+            最多为0.9999，parseInt(Math.random()*(max-min+1))+min
+     */
+        function randomCode(min,max){
+            // var code = parseInt(Math.random()*(max-min+1))+min;
+            // return code;
+            return parseInt(Math.random()*(max-min+1))+min;
+        }
+       console.log(randomCode(100,300));
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

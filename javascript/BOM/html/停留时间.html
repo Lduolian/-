@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var output = document.getElementById('output');
+            var start = new Date();
+            showTime();
+            setInterval(showTime,1000);
+            function showTime(){
+                var end = new Date();
+                var dur = parseInt((end.getTime() - start.getTime())/1000);
+                var Secs = Math.floor(dur % 60);
+                var Mins = Math.floor(dur/60%60);
+                var Hours = Math.floor(dur/60/60);
+                var hours = end.getHours();
+                var mins = end.getMinutes();
+                var secs = end.getSeconds();
+                output.innerHTML = '当前时间：' + hours + '时' + mins+ '分' + secs + '秒' + '<br>'+'停留时间：' + Hours + '时' + Mins + '分' + Secs + '秒';
+            }
+            // output.innerHTML = start;
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>

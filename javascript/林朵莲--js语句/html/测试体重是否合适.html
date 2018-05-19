@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>测试身材</h1>
+    身高<input type="text" id="height" />&nbsp;&nbsp;体重<input type="text" id="weight"/>
+    <button onclick="test()">测试</button>
+    <div id="txt"></div>
+
+    <script type="text/javascript">
+        var height = document.getElementById('height');
+        var weight = document.getElementById('weight');
+        var txt = document.getElementById('txt');
+        function test(){
+            var h = height.value*1;
+            var w = weight.value*1;
+            var stand = (h-108)*2;
+            if(w<stand-10){
+                txt.innerHTML="你太瘦了，要多吃点"
+            }else if(w>stand-10 && w<stand+10){
+                txt.innerHTML="您的体重正常";
+            }else if(w>stand+10){
+                txt.innerHTML="你太胖了，多运动"
+            }else{
+                txt.innerHTML="输入的数据有误"
+            }
+        }
+
+    </script>
+</body>
+</html>

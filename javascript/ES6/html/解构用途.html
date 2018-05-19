@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var x = 10;
+        var y = 20;
+        var [x,y] = [y,x];
+        console.log(x,y);
+
+        function fun(){
+            return [1,2,3,4];
+        }
+        var [a,b,c,d] = fun();
+        console.log(a,b,c,d);
+
+        function text([x=10,y=20,z=30]){
+            console.log(x,y,z);
+        }
+        text([10,20]);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

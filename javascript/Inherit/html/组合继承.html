@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        function Super(val){
+            this.val = val;
+            this.arr = [1];
+        }
+        Super.prototype.fun = function(){};
+        function Sub(val){
+            Super.call(this,val);
+        }
+        Sub.prototype = new Super();
+        var sub1 = new Sub(1);
+        var sub2 = new Sub(2);
+        sub1.arr.push(2);
+        console.log(sub1.val);      //1
+        console.log(sub2.val);      //2
+        console.log(sub1.arr);      //[1,2]
+        console.log(sub2.arr);      //[1]
+        console.log(sub1.fun===sub2.fun);   //true
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 320px;box-sizing: border-box;padding:5px;margin:50px auto;border:2px solid #ccc;text-align: center;}
+        .pic img{height: 180px;width: 180px;}
+        .show img{padding:5px;border:1px solid #ddd;}
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var picImg = document.getElementsByClassName('pic')[0].firstElementChild;
+            var showImg =  document.getElementsByClassName('show')[0].children;
+
+            for(var i = 0; i < showImg.length ;  i++){
+                showImg[i].onmouseover = function(e){
+                    e = e || window.event;
+                    var idx;
+                    for(var j = 0; j < showImg.length; j++){
+                        if(showImg[j]===this){
+                            idx = j;
+                        }
+                        showImg[j].style.borderColor = '#ddd';
+                    }
+                    this.style.borderColor = '#f90';
+                    picImg.src = '../images/small_' + (idx+1) +'.jpg';
+                }
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="pic">
+            <img src="../images/big_4.jpg" height="154" width="154" alt="" />
+        </div>
+        <div class="show">
+            <img src="../images/small_1.jpg" height="50" width="50" alt="" />
+            <img src="../images/small_2.jpg" height="50" width="50" alt="" />
+            <img src="../images/small_3.jpg" height="50" width="50" alt="" />
+            <img src="../images/small_4.jpg" height="50" width="50" alt="" />
+
+        </div>
+    </div>
+</body>
+</html>

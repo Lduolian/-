@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .box{width: 200px;height:100px;background:#f00;}
+
+    </style>
+    <script type="text/javascript" src='../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            let box = document.querySelector('.box');
+            box.onmouseover = ()=>{
+                animate(box,{width:500,height:200,fontSize:36},function(){
+                    box.style.color = '#fc0';
+                });
+            }
+            box.onmouseout = ()=>{
+                animate(box,{width:200,height:100,fontSize:16})
+            }
+        })
+
+    </script>
+
+</head>
+<body>
+    <div class="box">hello world</div>
+</body>
+</html>

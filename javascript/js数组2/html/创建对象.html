@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var obj = {name:'sasa',sex:'male',age:20,address:'阳江'};
+        // 增加，点语法或者方括号，如果是变量的话一定要用[]
+        obj['class'] = 1;
+        obj.hobby = ["singing","reading"];
+        // 删除
+        delete obj['class'];
+        // 查找
+        console.log(obj['name']);
+        // console.log(obj);
+        // 修改
+        obj.age = 18;
+        for(var key in obj){
+            console.log(key +':'+ obj[key]);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

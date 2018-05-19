@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #top{display:none;position: fixed;right:10px;bottom:10px;padding:20px;background-color: #f90;color:#fff;}
+    
+    </style>
+
+    <script type="text/javascript">
+        for(var i = 0; i < 1000 ; i++){
+                document.write('<p>如果我是DJ你会爱我吗' + i +'</p>');
+            }
+        window.onload = function(){
+            var top = document.getElementById('top');
+            window.onscroll = function(){
+                var scrollY = window.scrollY;
+                if(scrollY >= 1000){
+                    top.style.display = 'block';
+                }else{
+                    top.style.display = 'none';
+                }
+
+                top.onclick = function(){
+                    var timer = setInterval(function(){
+                        // var scrollY = window.scrollY;
+                        // scrollY -= 300;
+                        // if(scrollY<=0){
+                        //     scrollY = 0;
+                        //     clearInterval(timer);
+                        // }
+                        // scrollTo(0,scrollY);
+                        // 
+                        // 
+                        
+
+                        var speed = parseInt(window.scrollY/3);
+                        if(speed<=0){
+                            speed = 0;
+                            clearInterval(timer);
+                        }
+                        scrollBy(0,-speed);
+                    },30)
+                }
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="top">TOP</div>
+</body>
+</html>

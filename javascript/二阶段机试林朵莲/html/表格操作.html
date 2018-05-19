@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+         table{border: 1px solid #ccc;border-collapse: collapse;width: 100%;}
+        th,td{border: 1px solid #ccc;height: 30px;padding: 5px 10px;}
+        .change{background-color: #eee;}
+        .active{background:#fc0;}
+    </style>
+  
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var output = document.querySelector('#output');
+            var table = document.createElement('table');
+            var thead = document.createElement('thead');
+            var tbody = document.createElement('tbody');
+            var tr = document.createElement('tr');
+            var arr = '#，姓名，昵称，年龄，性别，爱好，操作'.split('，');
+            var data = [
+        { name: "刘备", nickname: "小刘", age: 58, gender: "男", hobby: ["撩妹", "装逼", "编草鞋"] },
+        { name: "关羽", nickname: "关二", age: 47, gender: "男", hobby: ["耍大刀", "变脸", "喝酒"] },
+        { name: "张飞", nickname: "张三", age: 45, gender: "男", hobby: ["打架", "喝酒", "耍流氓"] },
+        { name: "赵云", nickname: "赵四", age: 22, gender: "男", hobby: ["打架", "喝酒", "耍帅"] },
+        { name: "貂蝉", nickname: "美女", age: 20, gender: "女", hobby: ["撩汉", "化妆"] },
+        { name: "小乔", nickname: "乔二", age: 18, gender: "女", hobby: ["弹琴", "唱歌", "撩周瑜"] }
+    ];
+            data = JSON.parse(JSON.stringify(data));
+
+            //编辑表头
+            var th = document.createElement('th');
+            th.innerHTML = `<input type = 'checkbox'>`;
+            tr.appendChild(th);
+            for(var i = 0; i < arr.length; i++){
+                var th = document.createElement('th');
+                
+                th.innerHTML = arr[i];
+                tr.appendChild(th);
+                tr.className = 'change';
+            }
+            thead.appendChild(tr);
+            table.appendChild(thead);
+        
+            //把数据写入tbody
+            var i = 1;
+            data.forEach(function(item){
+                var tr = document.createElement('tr');
+                tr.innerHTML = `<td><input type='checkbox' class = 'checkbox'></td><td>${i}</td>`;
+                i++;
+                for(var attr in item){
+                    var td = document.createElement('td');
+                    td.innerHTML = item[attr];
+                    if(i%2===1){
+                        tr.classList.add('change');
+                    }
+                    tr.appendChild(td);
+                }
+                tr.innerHTML += `<td><button class = 'close'>&times;</button></td>`;
+                tbody.appendChild(tr);
+                table.appendChild(tbody);
+                output.appendChild(table);
+
+                //删除表格行并换色
+                tbody.onclick=function(e){
+                    e = e || window.event;
+                    var target = e.target || e.srcElement;
+                if(target.className==='close'){
+                    var tr = e.target.parentNode.parentNode;
+                    tr.parentNode.removeChild(tr);
+                    for(var i=0;i<tbody.children.length;i++){
+                        tbody.children[i].classList.remove('change');
+                        tbody.children[i].children[1].innerHTML=i+1;
+                        if(i%2===0){
+                            tbody.children[i].classList.add('change');
+                        }
+                    }
+                }
+
+                if(target.tagName.toLowerCase() === 'td'){
+                    var tr = target.parentNode;
+                    tr.children[0].children[0].checked = true;
+                    target.parentNode.className = 'active';
+                }
+
+            }
+
+            
+            });
+
+
+
+        })
+
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>

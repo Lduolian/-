@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var nowTime = document.querySelector('.nowTime');
+            var stopTime = document.querySelector('.stopTime');
+            var start = new Date();
+
+            getNowTime();
+            setInterval(getNowTime,1000);
+            function getNowTime(){
+                var end = new Date();
+                var Seconds = end.getSeconds();
+                var Minutes = end.getMinutes();
+                var Hours = end.getHours();
+                var duration = (Date.parse(end) - Date.parse(start))/1000;
+                var seconds = duration%60;
+                var minutes = Math.floor(duration/60%60);
+                var hours = Math.floor(duration/60/60);
+                nowTime.innerHTML = `停留时间：${hours}时${minutes}分${seconds}秒`;
+                stopTime.innerHTML = `当前时间：${Hours}时${Minutes}分${Seconds}秒`;
+            }
+           
+        })
+
+    </script>
+</head>
+<body>
+    <div class="nowTime"></div>
+    <div class="stopTime"></div>
+</body>
+</html>

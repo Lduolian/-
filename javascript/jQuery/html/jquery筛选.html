@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src='../lib/jquery-3.3.1.js'></script>
+    <script type="text/javascript">
+        jQuery(function($){
+            let $box = $('.box');
+            // let $links = $box.find('a');
+            let $links = $box.children('a.link');
+            console.log($links);
+            let $qq = $box.find('#qq').children().eq(1);
+            console.log($qq);
+            console.log($qq.siblings());
+        })
+
+    </script>
+</head>
+<body>
+    <div class="box" style="position: relative;">
+        <a href="">淘宝</a>
+        <a href="#" class="link">随意</a>
+        <a href="#" class="link">随意</a>
+        <a href="#" class="link">随意</a>
+        <span>  
+            <span id="qq">
+                <a href="#">qq</a>
+                <p></p>
+                <span></span>
+            </span>
+        </span>
+    </div>
+</body>
+</html>

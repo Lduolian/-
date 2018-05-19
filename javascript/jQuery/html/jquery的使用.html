@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src='../lib/jquery-3.3.1.js'></script>
+    <script type="text/javascript">
+        jQuery(function($){
+            let $box = $('.box');
+            console.log($box);
+            $box.css({"border":"1px solid red","color":"blue","padding":"10"});
+            let $btns = $('button');
+            $btns.css("border","0 none");
+            $btns.hide();
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="box">
+    #box
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    </div>
+</body>
+</html>

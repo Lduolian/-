@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var arr = new Array(30);
+        var array = [];
+        for(var i = 1,n = 1; i <= arr.length; i++,n++){
+            arr[i-1] = 2*n;
+            if(i === 5){
+                var a1 = arr.slice(0,5);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+              array.push(num1);
+            }
+            if(i === 10){
+                var a1 = arr.slice(5,10);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+               array.push(num1);
+            }
+            if(i === 15){
+                var a1 = arr.slice(10,15);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+               array.push(num1);
+            }
+            if(i === 20){
+                var a1 = arr.slice(15,20);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+                array.push(num1);
+            }
+            if(i === 25){
+                var a1 = arr.slice(20,25);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+               array.push(num1);
+            }
+            if(i === 30){
+                var a1 = arr.slice(25,30);
+                var num1 = (a1[0] + a1[1] +a1[2]+a1[3]+a1[4])/5;
+                array.push(num1);
+            }
+        }
+        console.log(arr);
+        console.log(array);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

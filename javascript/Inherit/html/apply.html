@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        function Pet(words){
+            this.words = words;
+            this.speak = function(){
+                console.log(this.words);
+            }
+        }
+        function Dog(words){
+            // Pet.call(this,words);   //wang
+            Pet.apply(this,arguments); //wang
+        }
+        var dog = new Dog("wang");
+        dog.speak();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

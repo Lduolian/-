@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+       table{border:1px;border-collapse:collapse;width: 800px;text-align: center;margin-top: 30px;}
+       table td{padding:8px 0;}
+    </style>
+</head>
+<body>
+    <label for="rows">行</label>
+    <input type="text" id="rows"/>
+    <label for="cols">列</label>
+    <input type="text" id="cols" />
+    <button onclick = "createTable()">生成表格</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var hang = document.getElementById('rows');
+        var lie = document.getElementById('cols');
+        var output = document.getElementById('output');
+        function createTable(){
+            var h = hang.value*1;
+            var l = lie.value*1;
+            var stu = "<table><tbody>";
+            
+            for(var i = 1; i <= h; i++){
+                //颜色随机，颜色[0-255]
+                var r = parseInt(Math.random()*256);
+                var g = parseInt(Math.random()*256);
+                var b = parseInt(Math.random()*256);
+                stu+='<tr style="background-color:rgb(' + r +',' + g +',' + b +') ">';
+                // style = "background-color:rgb(255,255,255)";
+                // html += '<tr style="background-color:rgb(' +  r + ',' +  g  + ',' + b + ')">';
+                for(var j  =1; j<=l; j++){
+                    stu += '<td>单元格'+i+'*'+j+'</td>';
+                }
+                stu += '</tr>';
+            }
+            stu +='</tbody></table>';
+            output.innerHTML = stu;
+        }
+        
+    </script>
+</body>
+</html>

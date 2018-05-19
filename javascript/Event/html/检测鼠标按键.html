@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 300px;height: 200px;background:#f90;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            box.onmouseup = function(e){
+                switch(e.button){
+                    case 0:
+                        box.innerHTML = '左键';
+                        break;
+                    case 1:
+                        box.innerHTML = '滚轮';
+                        break;
+                    case 2:
+                        box.innerHTML = '右键';
+                        break;
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

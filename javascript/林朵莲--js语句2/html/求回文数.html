@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    // 五位数中，对称的数称为回文数，找出所有的回文数:12321
+        var num = 0;
+        for(var i = 10000; i <= 99999; i++){
+            var wan = parseInt(i/10000);
+            var qian = parseInt(i%10000/1000);
+            var bai = parseInt(i%10000%1000/100);
+            var shi = parseInt(i%10000%1000%100/10);
+            var ge = parseInt(i%10);
+            if(wan==ge && qian == shi){
+                document.write(i+", ");
+                num++;
+            }
+        }
+    </script>
+    
+</head>
+<body>
+   <!--  <div id="output"></div>
+
+    <script type="text/javascript">
+        var output = document.getElementById('output');
+        var num = 0;
+        for(var i = 10000; i <= 99999; i++){
+            var wan = parseInt(i/10000);
+            var qian = parseInt(i%10000/1000);
+            var bai = parseInt(i%10000%1000/100);
+            var shi = parseInt(i%10000%1000%100/10);
+            var ge = parseInt(i%10);
+            if(wan==ge && qian == shi){
+                document.write(i+", ");
+                num++;
+            }
+            if(num%10==0){
+                document.write('<br />');
+            }
+            console.log(num);
+        }
+
+
+    </script> -->
+</body>
+</html>

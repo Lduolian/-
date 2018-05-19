@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1" onkeyup="sum()"/>+
+    <input type="text" id="num2" onkeyup="sum()"/>=
+    <input type="text" id="result" />
+
+    <script type="text/javascript">
+        
+        function sum(){
+            var v1 = document.getElementById('num1').value;
+            var v2 = document.getElementById('num2').value;
+            var res = parseInt(v1) + parseInt(v2);
+            document.getElementById('result').value=res;
+        }
+    </script>
+
+</body>
+</html>

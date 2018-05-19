@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+        函数内部隐藏的对象（是一个类数组），保存着实参的信息
+        声明函数带的参数为形参
+        执行函数传的参数为实参
+         */
+        function getMax(){
+            var max = 0;
+            console.log(arguments);
+            for(var i = 0; i <arguments.length; i++){
+                if(arguments[i] > max){
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        console.log(getMax(12,23,2,78,45));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

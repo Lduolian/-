@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        div,ul,li,span,p{margin:0;padding:0;}
+        ul li{list-style: none;}
+        .header{border-bottom: 2px solid #ddd;font-size: 14px;}
+        .name{font-weight: bold;}
+        .time{color:#ddd;}
+        .zan,.qty{height: 10px;background:#58bc58;color:#fff;padding:5px;float: right;margin-right:10px;line-height: 10px;cursor:default;}
+        .header p{line-height: 30px;}
+        .msgList{padding-top:20px;}
+        .msgList  li{font-size: 14px;line-height: 40px;border-bottom: 1px dashed #ddd;}
+        .msgList li span{float:right;color:#ddd;}
+        .form{padding-top: 20px;}
+        .form textarea{display:block;width: 100%;min-height: 50px;margin-bottom:5px;}
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() =>{
+            var obj={
+                "name": "laoxie",
+                "content": "说说最让人热血沸腾的一句话，我先来：不逼自己一把，你永远都不知道自己有多优秀",
+                "time": "2017-11-11",
+                "zan": 1,
+                "comment": [
+                {
+                    "name": "lemon",
+                    "con": "你可以上二流的大学，但不能过二流的人生",
+                    "time": "2017-12-5"
+                },
+                {
+                    "name": "小红",
+                    "con": "今晚我就回去逼下自己",
+                    "time": "2017-12-6"
+                },
+                {
+                    "name": "小吴",
+                    "con": "你不能拼爹，所以自能拼命",
+                    "time": "2017-12-7"
+                }]
+            };
+
+            //把obj转成对象
+            obj = JSON.parse(JSON.stringify(obj));
+    
+
+            var box = document.querySelector('#box');
+            var name = box.getElementsByClassName('name')[0];
+            var time = box.getElementsByClassName('time')[0];
+            var zan = box.getElementsByClassName('zan')[0];
+            var qty = box.getElementsByClassName('qty')[0];
+            var p = box.children[0].children[4];
+            var msgList = box.getElementsByClassName('msgList')[0];
+            var form = box.getElementsByClassName('form')[0];
+            var area = form.children[0];
+            var btn = form.children[1];
+
+            var comment = obj.comment;
+            var ul = document.createElement('ul');
+            ul.innerHTML = comment.map(function(item){
+                return `<li>${item.name}:${item.con}<span>${item.time}<span></li>`
+            }).join('');
+            msgList.appendChild(ul);
+            
+            name.innerHTML = obj.name;
+            time.innerHTML = obj.time;
+            zan.innerHTML = obj.zan;
+            qty.innerHTML = comment.length;
+            p.innerHTML = obj.content;
+
+            //点击点赞按钮，数量加1
+            zan.onclick = function(){
+                zan.innerHTML =Number(zan.innerHTML) + 1;
+            }
+            //点击评论按钮，弹出多行文本框
+            // qty.onclick = function(){
+            //     if(form.style.display === 'none'){
+            //         form.style.display = 'block'
+            //     }else{
+            //         form.style.display = 'none';
+            //     }
+                
+            // }
+
+            // 点击提交按钮，发送消息
+            btn.onclick = function(){
+                var _area = area.value;
+                var d = new Date();
+                var str = d.getFullYear()+'-' + d.getMonth()+1 +'-' + d.getDate() +' ' + d.getHours() +':' + d.getMinutes() + ':' + d.getSeconds();
+                var content = {name:'xiaolin',con:_area,time:str}
+                var li = document.createElement('li');
+                li.innerHTML = content.name + ':' + content.con + '<span>'+content.time+'</span>';
+                console.log(li);
+                ul.appendChild(li);
+                msgList.appendChild(ul);
+                
+
+            }
+
+
+            // function send(){
+            //     var _area = area.value;
+            //     var d1 = new Date();
+            //     var str = d.getFullYear()+'-' + d.getMonth()+1 +'-' + d.getDate() +' ' + d.getHours() +':' + d.getMinutes() + ':' + d.getSeconds();
+            //     var news = {name:'xiaolin',con:_area,time:str}
+            //     obj.push(news);
+            //     document.cookie = 'msgList=' + JSON.stringify(obj)
+            // }
+        })
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="header">
+            <span class = 'name'></span>
+            <span class = 'time'></span>
+            <span class = 'qty'></span>
+            <span class = 'zan'></span>
+            <p></p>
+        </div>
+        <div class="msgList"></div>
+        <form class = 'form'>
+            <textarea></textarea>
+            <button>提交</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        table{border:1px solid #ccc;border-collapse: collapse;}
+        table td{padding:10px;border:1px solid #ccc;}
+
+    </style>
+    <script type="text/javascript" src='../lib/jquery-3.3.1.js'></script>
+    <script type="text/javascript">
+        jQuery(function($){
+            let $table = $('.datalist');
+           
+            $table.on('click','.copyBtn',function(){
+                let $currentTr = $(this).closest('tr');
+                $currentTr.clone().appendTo($table);
+            })
+
+            $table.on('click','.deleteBtn',function(){
+                let $currentTr = $(this).closest('tr');
+                $currentTr.remove('tr');
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <table class="datalist">
+        <tr>
+            <td>1</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copyBtn">复制</button><button class="deleteBtn">删除</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copyBtn">复制</button><button class="deleteBtn">删除</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copyBtn">复制</button><button class="deleteBtn">删除</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copyBtn">复制</button><button class="deleteBtn">删除</button></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copyBtn">复制</button><button class="deleteBtn">删除</button></td>
+        </tr>
+    </table>
+</body>
+</html>

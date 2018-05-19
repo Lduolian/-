@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <!-- <script type="text/javascript">
+       var arr = [3,5,6,20,22,33,88];
+        var array = [];
+        for(var i = 0; i < arr.length; i++){
+                array.push(arr[i]);
+        }
+        function insertNumber(num){
+            array.push(num);
+            array.sort(function(a,b){
+                return a-b;
+            })
+            return array;
+        }
+        console.log(insertNumber(26));
+        console.log(insertNumber(8));
+        console.log(insertNumber(99));
+
+    </script> -->
+</head>
+<body>
+   <script type="text/javascript">
+   /*
+   splice(start, deleteNum, ...items)：可实现数组插入，删除和替换
+    */
+        var arr = [3,5,6,20,22,33,88];
+        function insert(num){
+            if(num>arr[arr.length-1]){
+                arr.push(num);
+                return arr;
+            }else{
+                for(var i = 0; i < arr.length; i++){
+                if(num < arr[i]){
+                    arr.splice(i,0,num);
+                    break;
+                }
+                }
+            return arr;
+            }
+        }
+        console.log(insert(28));
+   </script>
+</body>
+</html>

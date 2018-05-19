@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中
+    是加密的，加密规则如下：每位数字都加上5,然后用除以10的余数代替
+    该数字，再将第一位和第四位交换，第二位和第三位交换，请编写一个
+    函数，传入原文，输出密文
+    思路：1.分别求出每一位数
+          2.对数据加密
+     */
+        function encryption(n){
+            var g = n%10;
+            var s = parseInt(n%100/10);
+            var b = parseInt(n%1000/100);
+            var q = parseInt(n/1000);
+            g = (g+5)%10;
+            s = (s+5)%10;
+            b = (b+5)%10;
+            q = (q+5)%10;
+            var s = g*1000 + s*100 + b*10 + q;
+            return s;
+        }
+        alert(encryption(2345));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

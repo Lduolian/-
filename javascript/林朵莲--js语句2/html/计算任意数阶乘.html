@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num"/>
+    <button onclick="factorial()">计算阶乘</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var num = document.getElementById('num');
+        var output = document.getElementById('output');
+        function factorial(){
+            var sum = 1;
+            var n = num.value*1;
+            for(var i = 2; i <= n; i++){
+                sum = sum *i;
+            }
+        output.innerHTML =n+'的阶乘是' +sum;
+
+        }
+
+
+    </script>
+</body>
+</html>

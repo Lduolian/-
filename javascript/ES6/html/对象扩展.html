@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var obj = {
+            name:'lili',
+            age:18,
+            sex:'girl',
+            hobby:['看书','学习','健身']
+        }
+
+        var newObj1 = {};
+        for(var key in obj){
+            newObj1[key] = obj[key];
+        }
+
+        var newObj2 = Object.assign({},obj);
+
+        var newObj3 = JSON.parse(JSON.stringify(obj));
+
+        obj.hobby.push('打球');
+        Object.assign(obj,{form:'chinese',age:19});
+        console.log(obj);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

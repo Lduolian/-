@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #bar{width: 0;height: 5px;background:blue;position:relative;}
+        #percent{position:absolute;top:100%;left:50%;transform:translate(-50%,0);padding:5px;font-size:10px;}
+
+
+    </style>
+</head>
+<body>
+    <div id="bar"><span id='percent'></span></div>
+
+    <script type="text/javascript">
+    /*
+    使用定时器实现进度条效果
+    1)innerWidth/innerHeight：获得的是可视区域的宽高，但是window.innerWidth宽度包含了纵向滚动条的宽度，
+    window.innerHeight高度包含了横向滚动条的高度(IE8以及低版本浏览器不支持)
+     */
+        var bar = document.getElementById('bar');
+        var percent = document.getElementById('percent');
+        var width = 0;
+        var item = setInterval(function(){
+            width += 20;
+            if(width >= window.innerWidth){
+                width = window.innerWidth;
+                clearInterval(item);
+            }
+            bar.style.width = width + 'px';
+            console.log(666);
+            percent.innerHTML = (width/window.innerWidth*100).toFixed(1) + '%';
+        },30)
+
+
+
+    </script>
+</body>
+</html>

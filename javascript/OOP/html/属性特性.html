@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var person = {name:'lili',age:18,gender:'femail'};
+        person.name = 'linlin';
+        Object.defineProperty(person,'hobby',{value:'singing',wirtable:true})
+        person.hobby = 'dancing';
+
+        Object.defineProperties(person,{eat:{value:'frutes',enumerable:true},
+                sleep:{value:'bed'}})
+
+
+
+        for(var key in person){
+            console.log(key);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

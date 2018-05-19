@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        table{width: 100%;margin-top: 30px;text-align: center;font-size: 12px;border:1px solid #000;border-collapse:collapse;}
+        table tr{padding:8px 0;}
+        table td{border:1px solid #000;}
+
+    </style>
+</head>
+<body>
+    <label for="rows">行</label>
+    <input type="text" id="rows"/>
+    <label for="cols">列</label>
+    <input type="text" id='cols' />
+    <button id='btn'>生成表格</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var rows = document.getElementById('rows');
+        var cols = document.getElementById('cols');
+        var btn = document.getElementById('btn');
+        var str = '<table><tbody>';
+
+        function createTable(rows,cols){
+            for(var i = 1; i <= rows; i++){
+                str += '<tr>';
+                for(var j = 1; j <= cols; j++){
+                    str += '<td>单元格' + i +'*' + j +'</td>';
+                }
+                str += '</tr>';
+            }
+            str += '</tbody></table>';
+            return str;
+        }
+
+        btn.onclick = function(){
+            var r = rows.value*1;
+            var c = cols.value*1;
+            output.innerHTML = createTable(r,c);
+        }
+
+
+    </script>
+</body>
+</html>

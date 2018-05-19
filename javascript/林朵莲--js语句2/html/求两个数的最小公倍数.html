@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>求两个数的最小公倍数</h1>
+    <label for="num1">输入第一个数</label>
+    <input type="text" id="num1"/><br />
+    <label for="num2">输入第二个数</label>
+    <input type="text" id="num2" /><br />
+    <button onclick = "gongBeiShu()">最小公倍数</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var num1 = document.getElementById('num1');
+        var num2 = document.getElementById('num2');
+        var output = document.getElementById('output');
+        /*
+            思路：最小公倍数
+            最小公倍数肯定不会小于最大数
+            先找出两个数的最大数
+         */
+        function gongBeiShu(){
+            var _num1 = num1.value*1;
+            var _num2 = num2.value*1;
+            var max = 0;
+            var minBei = 0;
+            if(_num1 > _num2){
+                max = _num1;
+            }else{
+                max = _num2;
+            }
+            for(var i = max; i <= _num1*_num2; i++){
+                if(i % _num1===0 && i % _num2 ===0){
+                    minBei = i;
+                    break;
+                }
+            }
+            output.innerHTML = "最小公倍数是：" + minBei;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        body{overflow:hidden;}
+        #bird{width: 200px;position:absolute;top: 0;left: 0;}
+        .right{transform:rotateY(180deg);}
+        .up{transform:rotateZ(45deg);}
+        .down{transform:rotateZ(-45deg);}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var bird = document.getElementById('bird');
+            document.onkeydown = function(e){
+                var top = bird.offsetTop;
+                var left = bird.offsetLeft;
+                var speed = 10;
+                var className = '';
+
+                switch(e.keyCode){
+                    case 37:
+                        left -= speed;
+                        className = '';
+                        break;
+                    case 39:
+                        left += speed;
+                        className = 'right';
+                        break;
+                    case 38:
+                        top -= speed;
+                        className = 'up';
+                        break;
+                    case 40:
+                        top += speed;
+                        className = 'down';
+                        break;
+                }
+
+                if(top==e.clientY){
+                    top = -200;
+                }
+
+                bird.style.left = left +'px';
+                bird.style.top = top + 'px';
+                bird.className = className;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <img src="../images/bird.jpg" id='bird'/>
+</body>
+</html>

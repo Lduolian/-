@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var btn = document.getElementById('btn');
+            var picImg = document.getElementsByClassName('pic')[0].firstElementChild;
+
+            var idx = 1;
+            var timer = setInterval(function(){
+                picImg.src = '../images/g' + idx + '.jpg';
+                idx++;
+                if(idx>5){
+                    idx = 1;
+                }
+            },1000)
+
+            btn.onclick = function(){
+                if(btn.innerHTML == '停止播放'){
+                    clearInterval(timer);
+                    btn.innerHTML = '继续播放';
+                }else{
+                    timer = setInterval(function(){
+                        picImg.src = '../images/g' + idx + '.jpg';
+                        idx++;
+                        if(idx>5){
+                            idx  = 1;
+                        }
+                    },1000)
+                    btn.innerHTML = '停止播放';
+                }
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <button id='btn'>停止播放</button>
+    <div class="pic">
+        <img src="../images/g1.jpg" height="320" width="320" alt="" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var arr = [12,34,5,3,30,4,8,66];
+        // var newArr = [];
+        var newArr = arr.filter(function(item){
+            // if(item<10){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+            // return item<10? true:false;
+            return item<10;
+        })
+        // console.log(newArr);
+
+        var res = arr.some(function(item){
+            return item===8;
+        })
+        console.log(res);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

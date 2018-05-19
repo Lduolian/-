@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        .accordion{width:600px;border:2px solid #58bc58;}
+        .accordion h4{margin:0;padding:5px 10px;background-color: #58bc58;margin:1px;}
+        .accordion .content{display: none;padding:50px 20px;text-align: center;font-size:36px;background-color: #ffc;}
+    </style>
+    <script type="text/javascript" src='../lib/jquery-3.3.1.js'></script>
+    <script type="text/javascript">
+        jQuery(function($){
+            $('.accordion').on('mouseover','h4',function(){
+                $(this).next('.content').fadeIn(3000).siblings('.content').fadeOut(200);
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div class="accordion">
+        <h4>标题1</h4>
+        <div class="content">内容1</div>
+        <h4>标题2</h4>
+        <div class="content">内容2</div>
+        <h4>标题3</h4>
+        <div class="content">内容3</div>
+        <h4>标题4</h4>
+        <div class="content">内容4</div>
+        <h4>标题5</h4>
+        <div class="content">内容5</div>
+    </div>
+</body>
+</html>

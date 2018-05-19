@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        function show(x){
+            var a = 10;
+            function get(){
+                var b = 20;
+                console.log(a+b);
+            }
+            return get;
+        }
+
+        show(666)();
+
+        // function b(){
+        //     var a = 10;
+        //     a++;
+        //     console.log(a);
+        // }
+        // b();
+        // b();
+        // b();
+        
+        function b(){
+            var a = 10;
+            function get(){
+                a++;
+                console.log(a);
+            }
+            return get;
+        }
+        var res = b();
+        res();
+        res();
+        res();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

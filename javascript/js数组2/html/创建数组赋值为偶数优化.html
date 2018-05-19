@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的
+    偶数；然后按顺序每五个数求出一个平均值，放在另一个数组
+    中并输出
+    push():在数组后面添加一个或多个元素
+     */
+        var arr = [];
+        var newArr = [];
+        var average = 0;
+        arr.length = 30;
+        for(var i = 1; i <= arr.length; i++){
+            arr[i-1] = 2*i;
+            average += arr[i-1];
+            if(i%5== 0){
+                newArr.push(average/5);
+                average = 0;
+            }
+        }
+        console.log(arr);
+        console.log(newArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

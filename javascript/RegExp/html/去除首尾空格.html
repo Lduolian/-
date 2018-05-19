@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var username = '  hello world   ';
+        // var regExp = new RegExp('^\\s\+|')
+        // username = username.replace(/^\s+|\s+$/g,'');
+        var reg = new RegExp('^\\s+|\\s+$','g');
+        username = username.replace(reg,'');
+
+        console.log(username);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

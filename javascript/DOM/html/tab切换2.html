@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .tab{width: 380px;border:2px solid #ddd;padding:10px;}
+        .tab header{padding:5px;border-bottom: 2px solid #ddd;overflow:hidden;}
+        .tab header div{float:left;padding:10px 10px;border-right:1px solid #ddd;}
+        .tab .content{margin-top: 20px;min-height: 100px;}
+        .active{background:orange;color:#fff;}    
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var tab = document.getElementsByClassName('tab')[0];
+            var hTab = tab.children[0].children;
+            var cImg = tab.children[1].children;
+
+            hTab[0].className = 'active';
+            for(var i = 0; i < hTab.length; i++){
+                if(i>0){
+                    cImg[i].style.display = 'none';
+                }
+                hTab[i].onclick = function(){
+                    var idx;
+                    for(var j = 0; j < hTab.length; j++){
+                        if(hTab[j] === this){
+                            idx = j;
+                        }
+                        hTab[j].className = '';
+                        cImg[j].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    cImg[idx].style.display = 'block';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="tab">
+        <header>
+            <div>Tab1</div>
+            <div>Tab2</div>
+            <div>Tab3</div>
+            <div>Tab4</div>
+            <div>Tab5</div>
+        </header>
+        <div class="content">
+            <img src="../images/g1.jpg" alt="" />
+            <img src="../images/g2.jpg" alt="" />
+            <img src="../images/g3.jpg" alt="" />
+            <img src="../images/g4.jpg" alt="" />
+            <img src="../images/g5.jpg" alt="" />
+        </div>
+    </div>
+</body>
+</html>

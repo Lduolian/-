@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var name = 'Globle';
+        var student = {name:'John'};
+        var person = {
+            name:'Scott',
+            getName:function(){
+                return this.name;
+            }
+        };
+        console.log(person.getName())
+        // var getName = person.getName;
+        // console.log(getName());
+        // console.log(getName.call(student));
+        var getName = person.getName.bind(person);
+        console.log(getName());
+        console.log(getName.call(student));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

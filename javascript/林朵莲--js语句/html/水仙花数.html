@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        //三位数：各位立方和等于该数本身
+        //parseInt():取整
+        for(var i = 100; i<=999; i++){
+            var bai = parseInt(i/100);//求百位
+            var shi = parseInt(i%100/10);//求十位
+            var ge = i%10;//求个位
+            if(i==bai*bai*bai+shi*shi*shi+ge*ge*ge){
+                document.write(i+" ");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

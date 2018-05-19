@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>全选</title>
+</head>
+<body>
+    <div>
+        <input type="checkbox" name="my" onclick = "cancleCheckAll()"/>html
+        <input type="checkbox" name="my" onclick = "cancleCheckAll()"/>javascript
+        <input type="checkbox" name="my" onclick = "cancleCheckAll()"/>css
+        <input type="checkbox" name="my" onclick = "cancleCheckAll()"/>jquery
+        <input type="checkbox" id="all" onclick = "checkAll()"/>全选
+
+    </div>
+
+    <script type="text/javascript">
+        function checkAll() {
+            var all = document.getElementById('all');
+            var one = document.getElementsByName('my');
+            if(all.checked == true){
+                for(var i = 0; i < one.length; i++){
+                    one[i].checked = true;
+                }
+            }else{
+                for(var j = 0; j < one.length; j++){
+                    one[j].checked = false;
+                }
+            }
+        }
+
+        function cancleCheckAll(){
+            var one = document.getElementsByName('my');
+            var all = document.getElementById('all');
+
+            var count = 0,num = 0;
+            for(var i =0; i < one.length ; i++){
+                if(one[i].checked == true){
+                    count++;
+                }
+                if(one[i].checked == false){
+                    num ++;
+                }
+                if(count == one.length){
+                    all.checked = true;
+                }
+                if(num > 0){
+                    if(all.checked == true){
+                        all.checked = false;
+                    }
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

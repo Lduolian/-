@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <img src="../images/g4.jpg" />
+    </div>
+    <!-- <button id="show">显示</button>
+    <button id="hide">隐藏</button> -->
+    <button id="btn">显示/隐藏</button>
+
+    <script type="text/javascript">
+        var box = document.getElementById('box');
+        // var show = document.getElementById('show');
+        // var hide = document.getElementById('hide');
+        var btn = document.getElementById('btn');
+
+        // show.onclick = function(){
+        //     box.style.display = 'block';
+        // }
+        // hide.onclick = function(){
+        //     box.style.display = 'none';
+        // }
+        
+        function isShowImg(n){
+            box.style.display = n;
+        }
+        btn.onclick = function(){
+            if(box.style.display=='none'){
+                isShowImg('block');
+            }else{
+                isShowImg('none');
+            }
+        }
+    </script>
+</body>
+</html>

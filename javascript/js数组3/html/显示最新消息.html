@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        h1{text-align: center;}
+        .newslist{width: 600px;border:2px solid #ccc;margin:0 auto;border-radius: 10px;padding:8px;}
+        .newslist h4{margin:0 0 10px;border-bottom: 1px solid #ccc;padding-bottom: 10px;}
+        .newslist ul{list-style: none;padding:0;margin:0;line-height: 28px;}
+        .form{width: 600px;margin:100px auto 0;text-align: center;overflow:hidden;}
+        .form input{width: 480px;float:left;height: 50px;box-sizing: border-box;padding-left: 10px;}
+        .form button{width: 120px;float:left;height: 50px;}
+    </style>
+</head>
+<body>
+    <h1>显示十条最新消息</h1>
+    <div class="newslist">
+        <h4>最新消息</h4>
+        <ul id= 'new_list'></ul>
+    </div>
+    <div class="form">
+        <input type="text" id='news'/><button id='btn'>添加</button>
+    </div>
+
+    <script type="text/javascript">
+    /*
+    思路：1.把新输入的消息加入数组中
+          2.重新把数据写入页面
+          map():返回一个数量相等的数组，内容是什么取决于fn中返回的值
+          join():数组转字符串值
+     */
+        var newslist = ['小明由于调戏女老师再次被滚粗教室','iPhone10发布,屏幕高度亮瞎了所有小伙伴','为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号'];
+        var new_list = document.getElementById('new_list');
+        var news = document.getElementById('news');
+        var btn = document.getElementById('btn');
+        
+        render();
+        btn.onclick = function(){
+            newslist.unshift(news.value);
+           render();
+            news.value='';
+            news.focus();
+        }
+
+        function render(){
+            new_list.innerHTML = newslist.map(function(item){
+            return '<li><a href="#">'+item+'</a></li>';
+        }).join('');
+        }
+
+    </script>
+</body>
+</html>

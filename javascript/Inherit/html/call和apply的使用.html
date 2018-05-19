@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src='../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            var arr = [10,2,34,23,56,43,76,48,99,6];
+            var max = Math.max.apply(null,arr);
+            var min = Math.min.apply(null,arr);
+            var btns = document.querySelectorAll('.btn');
+
+            var res = Array.prototype.map.call(btns,item=>{
+                return item.innerText;
+            }).join();
+            console.log(res);
+
+            var arr2 = [10,20,30];
+            var res2 = Object.prototype.toString.call(arr2);
+            console.log(res2);
+
+            console.log(type(""));
+        })
+        
+    </script>
+</head>
+<body>
+    <button class="btn">button1</button>
+    <button class="btn">button2</button>
+    <button class="btn">button3</button>
+    <button class="btn">button4</button>
+    <button class="btn">button5</button>
+    <button class="btn">button6</button>
+    <button class="btn">button7</button>
+    <button class="btn">button8</button>
+    <button class="btn">button9</button>
+    <button class="btn">button10</button>
+</body>
+</html>

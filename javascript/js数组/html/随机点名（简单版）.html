@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src='../../comment.js'></script>
+</head>
+<body>
+    <input type="text" id='username'/>
+    <button id='btn'>随机点名</button>
+
+    <script type="text/javascript">
+        var username = document.getElementById('username');
+        var btn = document.getElementById('btn');
+        var arr = ['小二','张三','李四','王武','赵柳','小红','小名'];
+
+        getName();
+        function getName(){
+            username.value = arr[randomNumber(0,arr.length-1)];
+        }
+        btn.onclick = getName;
+
+    </script>
+</body>
+</html>

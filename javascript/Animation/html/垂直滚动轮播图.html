@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直滚动动轮播图</title>
+    <style>
+        ul{list-style:none;padding:0;margin:0;}
+        .lunbotu{position:relative;width:320px;height:320px;overflow: hidden;}
+        .lunbotu ul{position: absolute;top:0;left:0;}
+        .lunbotu img{display:block;}
+    </style>
+    <script type="text/javascript" src = '../../comment.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            let lbt = document.querySelector('.lunbotu');
+            let ul = lbt.children[0];
+
+            let imgHeight;
+            ul.querySelector('img').onload = function(){
+                imgHeight = this.offsetHeight;
+            }
+
+            let len = ul.children.length;
+
+            let index = 0;
+
+            // 切换图片
+            let timer = setInterval(autoPlay,3000);
+
+
+            // 鼠标移入移出
+            lbt.onmouseenter = ()=>{
+                clearInterval(timer);
+            }
+
+            lbt.onmouseleave = ()=>{
+                timer = setInterval(autoPlay,3000);
+            }
+
+            function autoPlay(){
+
+                index++;
+
+                if(index >= len){
+                    index = 0;
+                }
+
+                let target = -imgHeight*index;
+
+                // ul.style.top = target + 'px';
+                // 把切换变成动画
+                animate(ul,'top',target);
+                // animate(ul,{top:target})
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>垂直滚动动轮播图</h1>
+    <div class="lunbotu">
+        <ul>
+            <li><img src="../images/g1.jpg" alt=""></li>
+            <li><img src="../images/g2.jpg" alt=""></li>
+            <li><img src="../images/g3.jpg" alt=""></li>
+            <li><img src="../images/g4.jpg" alt=""></li>
+            <li><img src="../images/g5.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var goods = {
+                name:'阿联酋美女',
+                age:18,
+                price:'20W',
+                imgurl:'../images/g1.jpg'
+            }
+
+            var params = '';
+            for(var key in goods){
+                params += key + '=' + encodeURI(goods[key]) + '&';
+            }
+            params = params.slice(0,-1);
+            console.log(params);
+
+            var meinv = document.getElementById('meinv');
+            meinv.onclick = function(){
+                meinv.href = 'details.html?' + params;
+            }
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+    <a href="#" id='meinv'><img src="../images/g1.jpg"></a>
+</body>
+</html>

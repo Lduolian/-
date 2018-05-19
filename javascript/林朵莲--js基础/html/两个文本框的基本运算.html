@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1" onkeyup="jisuan()"/>
+    <select name="" id="ysf">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+
+    </select>
+    <input type="text" id="num2" onkeyup="jisuan()"/>
+    <input type="text" id="result" />
+    <script type="text/javascript">
+        function jisuan(){
+            var v1 = document.getElementById('num1').value;
+            var v2 = document.getElementById('num2').value;
+            var res1 = parseInt(v1) + parseInt(v2);
+            var res2 = parseInt(v1) - parseInt(v2);
+            var res3 = parseInt(v1) * parseInt(v2);
+            var res4 = parseInt(v1) / parseInt(v2);
+            var res5 = parseInt(v1) % parseInt(v2);
+            var ysf = document.getElementById('ysf').value;
+            if(ysf=='+'){
+                 document.getElementById('result').value = res1;
+            }else if(ysf=='-'){
+                 document.getElementById('result').value = res2;
+            }else if(ysf=='*'){
+                 document.getElementById('result').value = res3;
+            }else if(ysf=='/'){
+                 document.getElementById('result').value = res4;
+            }else{
+                 document.getElementById('result').value = res5;
+            }
+           
+        }
+
+    </script>
+</body>
+</html>

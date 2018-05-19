@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            next.onclick = function(){
+                history.forward();
+                console.log(666);
+            }
+            prev.onclick = function(){
+                history.back();
+                console.log(777);
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    hello,my name is home
+    <button id='prev'>向前</button>
+    <button id='next'>向后</button>
+    <ul>
+        <li><a href="home.html">home</a></li>
+        <li><a href="flower.html">flower</a></li>
+        <li><a href="main.html">main</a></li>
+        <li><a href="rose.html">rose</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        #header{height: 100px;background:pink;}
+        #nav{height: 150px;background:orange;}
+        #main{height: 3000px;background:#ccc;}
+        .fixed{position:fixed;top:0;left:0;right:0;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var header = document.getElementById('header');
+            var nav = document.getElementById('nav');
+
+            window.onscroll = function(){
+                var scrollY = window.scrollY;
+                if(scrollY >= header.offsetHeight){
+                    nav.className = 'fixed';
+                }else{
+                    nav.className = '';
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="nav"></div>
+    <div id="main"></div>
+</body>
+</html>

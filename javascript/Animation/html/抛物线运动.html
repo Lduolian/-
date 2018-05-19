@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        body{background:#000;overflow:hidden;}
+        .basketball{width: 100px;position:absolute;left: 0;top: 0;}
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            let basketball = document.querySelector('.basketball');
+
+            let speed = 0;
+            let lspeed = 50;
+            let timer = setInterval(() => {
+                speed += 5;
+                let top = basketball.offsetTop;
+                let left = basketball.offsetLeft;
+                if(top>= window.innerHeight - basketball.offsetHeight){
+                    clearInterval(timer);
+                    top = window.innerHeight - basketball.offsetHeight - speed;
+                }
+                basketball.style.top = top + speed + 'px';
+                basketball.style.left = left + lspeed + 'px';
+            },30)
+        })
+
+
+    </script>
+</head>
+<body>
+    <img src="../images/basketball.jpg" class = 'basketball' />
+</body>
+</html>

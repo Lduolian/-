@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            static getInfo(){
+                console.log(`大家好，我是${this.name}，我今年${this.age}岁`);
+            }
+        }
+        var per = new Person("zhangsan",18);
+
+        class Man extends Person{
+            constructor(name,age,gender){
+                super(name,age);//一定要写在构造函数的第一行
+                
+                this.gender = gender;
+            }
+
+        }
+         var man = new Man("lisi",20,"男");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

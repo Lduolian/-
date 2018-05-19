@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <label for="n">输入一个数字n</label>
+    <input type="text" id="n" /><br />
+    <label for="a">输入一个数字a</label>
+    <input type="text" id="a" />
+    <button onclick="fun()">确定</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var n = document.getElementById('n');
+        var a = document.getElementById('a');
+        var output = document.getElementById('output');
+        function fun(){
+            var _n = n.value*1;
+            var _a = a.value*1;
+            var sum = _a;
+            var num = _a;
+            for(var i = 2; i <= _n; i++){
+                num = num*10+_a;
+                sum = sum+num;
+                
+            }
+            output.innerHTML ='a+aa+aaa+... = '+ sum;
+        }
+
+
+
+    </script>
+</body>
+</html>

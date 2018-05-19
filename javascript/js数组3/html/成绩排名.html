@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    以下是某班级一次考试的成绩表。请计算每个学生总成绩，并按总成绩
+    排名。统计各单科成绩第一名，输出其成绩与学号。
+     */
+        var arr = [[105,62,118],[89,78,120],[86,64,80],[78,99,91],
+        [107.5,97,70],[112,61,92],[101,79,104],[71,72,105],[56,68,61],[98,83,77]];
+        var score = [];
+        for(var i = 0; i < arr.length; i++){
+            var sum = 0;
+            for(var j = 0; j < arr[i].length; j++){
+                sum += arr[i][j];
+            }
+            score.push(sum);
+            console.log('学号' + (i+1)+'的总成绩为：' + sum);
+
+        }
+        score.sort(function(a,b){
+            return a-b;
+        })
+        console.log(score);
+
+        var chinese = [];//装语文成绩的数组
+        for(var i = 0,j = 0; i < arr.length; i++){//每个二维数组的第一个数据是语文成绩
+            chinese.push(arr[i][j]);
+        }
+        console.log(chinese);
+        var max = chinese[0];
+        var maxInd = 0;
+        chinese.forEach(function(item,ind){
+            if(item>max){
+                max = item;
+                maxInd = ind;
+            }
+
+        })
+        console.log('学号'+(maxInd+1)+'的语文成绩最高');
+
+        var math = [];
+        for(var i = 0,j = 1; i < arr.length; i++){
+            math.push(arr[i][j]);
+        }
+        console.log(math);
+        var max = math[0];
+        var maxInd = 0;
+        math.forEach(function(item,ind){
+            if(item>max){
+                max = item;
+                maxInd = ind;
+            }
+
+        })
+        console.log('学号'+(maxInd+1)+'的数学成绩最高');
+
+        var english = [];
+        for(var i = 0,j = 2; i < arr.length; i++){
+            english.push(arr[i][j]);
+        }
+        console.log(english);
+        var max = english[0];
+        var maxInd = 0;
+        english.forEach(function(item,ind){
+            if(item>max){
+                max = item;
+                maxInd = ind;
+            }
+
+        })
+        console.log('学号'+(maxInd+1)+'的英语成绩最高');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

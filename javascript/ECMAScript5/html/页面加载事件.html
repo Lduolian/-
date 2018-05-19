@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            console.log('onload',box);
+        }
+
+        document.onreadystatechange = function(){
+            var box = document.getElementById('box');
+            if(document.readyState === 'interactive'){
+                console.log('interactive',box);
+            }
+            if(document.readyState === 'complete'){
+                console.log('complete',box);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded',function(){
+            var box = document.getElementById('box');
+            console.log('DOMContantLoaded',box);
+        })
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

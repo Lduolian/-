@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="year"/>
+    <button onclick="isrun()">sure?</button>
+    <div id="txt"></div>
+    <script type="text/javascript">
+        function isrun(){
+            var year = document.getElementById('year').value*1;
+
+            if((year%4==0 && year%100!=0)||year%400==0){
+                document.getElementById('txt').innerHTML="是闰年";
+            }else{
+                document.getElementById('txt').innerHTML="是平年";
+            }
+        }
+
+    </script>
+</body>
+</html>

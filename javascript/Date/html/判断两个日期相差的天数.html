@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id='start'/>
+    <input type="date" id='end'/>
+    <button id='btn'>相差天数</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+    /*判断两个日期相差的天数
+        Date.parse(“2015-08-24”)//返回指定日期距1970-1-1零时的毫秒数
+     */
+        var start = document.getElementById('start');
+        var end = document.getElementById('end');
+        var btn = document.getElementById('btn');
+        var output = document.getElementById('output');
+
+        btn.onclick = function(){
+            // var s = start.value;
+            // var e = end.value;
+
+            // s = new Date(s);
+            // e = new Date(e);
+
+            // var dur = e.getTime()-s.getTime();
+            var dur = Date.parse(new Date(end.value)) - Date.parse(new Date(start.value));
+            var day = Math.ceil(dur/1000/60/60/24);
+            output.innerHTML = '相差的天数' + day;
+
+        }
+
+    </script>
+</body>
+</html>

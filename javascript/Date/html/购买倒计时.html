@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        /**{margin:0;padding:0;}*/
+        #btn{position:relative;}
+        #count{position:absolute;left:55px;top:50%;transform:translate(0,-58%);};
+
+    </style>
+</head>
+<body>
+    <img src="../images/g1.jpg"/>
+    <div id="btn">
+        <div id="count"></div>
+        <img src="../images/btn_buy0.jpg" id='buyimg'/>
+    </div>
+
+    <script type="text/javascript">
+    /*
+    秒杀活动倒计时
+        倒计时结束后显示购买按钮
+        setTimeout(fn,200)：两百毫秒后执行fn这个函数（只执行一次）,返回一个id标识
+        clearInterval(intervalID)：清除指定id标识的定时器操作
+     */
+        var count = document.getElementById('count');
+        var buyimg = document.getElementById('buyimg');
+
+        var end = new Date('2018/3/1 18:00:50');
+        showTime();
+        var timer = setInterval(showTime,1000);
+        function showTime(){
+            var offset = Date.parse(end)-Date.now();
+            offset = Math.floor(offset/1000);
+            var sec = Math.floor(offset%60);
+            var min = Math.floor(offset/60)%60;
+            var hours = Math.floor(offset/60/60)%24;
+            var days = Math.floor(offset/60/60/24);
+
+            //补0操作
+            sec = sec<10 ? '0' + sec : sec;
+            min = min<10 ? '0' + min : min;
+            hours = hours<10 ? '0' + hours : hours;
+
+            if(offset<=0){
+                clearInterval(timer);
+                buyimg.src = '../images/btn_buy.jpg';
+                count.style.display = 'none';
+            }
+            console.log(666);
+
+            count.innerHTML = days+'天' + hours +'时' + min +'分' + sec + '秒';
+        }
+
+
+    </script>
+</body>
+</html>

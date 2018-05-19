@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var Pet = {
+            word:"...",
+            speak:function(says){
+                console.log(says + this.word);
+            }
+        }
+        Pet.speak('speak');     //speak...
+        var Dog = {
+            word:"wang"
+        }
+        //将this的指向改成了Dog
+        Pet.speak.call(Dog,'speak');    //speakwang
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

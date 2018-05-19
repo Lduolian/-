@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 200px;height: 100px;background:#f90;text-align: center;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            box.onmouseover = function(){
+                console.log('onmouseover');
+            }
+            box.onmouseout = function(){
+                console.log('onmouseout');
+            }
+            box.onmousemove = function(){
+                console.log('onmousemove');
+            }
+            
+        }
+
+    </script>
+</head>
+<body>
+    <div id="box">事件侦测</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    
+</head>
+<body>
+<label for="num1">第一个值</label><input type="text" id="num1"/><br />
+<label for="num2">第二个值</label><input type="text" id="num2"/><br />
+<label for="num3">第三个值</label><input type="text" id="num3"/><br />
+比较大小:<button id="btn">比较大小</button>
+<div id="output"></div>
+
+<script type="text/javascript">
+        var num1 = document.getElementById('num1');
+        var num2 = document.getElementById('num2');
+        var num3 = document.getElementById('num3');
+        var btn = document.getElementById('btn');
+        var output = document.getElementById('output');
+
+
+        function sorting(num1,num2,num3){
+            var t = 0;
+            if(num1<num2){//执行完这个if语句可以保证num1>num2
+                t = num1;
+                num1 = num2;
+                num2 = t;
+            }
+            if(num2<num3){//执行完这个if语句可以保证num2>num3
+                t = num2;
+                num2 = num3;
+                num3 = t;
+            }
+            if(num1<num2){//num3确定为最小,比较num1和num2
+                t = num1;
+                num1 = num2;
+                num2 = t;
+            }
+            return num3 + '<' + num2 + '<' + num1;
+        }
+        btn.onclick = function(){
+            var n1 = num1.value*1;
+            var n2 = num2.value*1;
+            var n3 = num3.value*1;
+            output.innerHTML = sorting(n1,n2,n3);
+        }
+        
+    </script>
+    
+</body>
+</html>

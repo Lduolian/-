@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+        1.利用Set集合不能添加重复元素来去重
+        2.map()是数组新增遍历方法
+        3.splice()可以删除元素
+         */
+
+        var arr = [1,2,3,1,5,2,6,7,2,18,4,7];
+        // var array = new Set(arr);
+        // console.log(array);
+        function norepeat(arr){
+            for(var i = 0;i < arr.length; i++){
+                for(var j = i+1; j< arr.length; j++){
+                    if(arr[i]===arr[j]){
+                        arr.splice(j,1);
+                    }
+                }
+            }
+            var newArr = arr.map(function(item){
+                return item;
+            })
+            return newArr;
+        }
+       
+        console.log(norepeat(arr));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

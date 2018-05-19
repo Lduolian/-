@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        img{/*width: 50px;height: 70px;*/padding:5px;}
+    
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var output = document.getElementById('output');
+            var start = new Date();
+            showTime();
+            setInterval(function(){
+                showTime();
+            },1000)
+
+            function showTime(){
+                var end = new Date();
+                var hours = end.getHours();
+                var mins = end.getMinutes();
+                var secs = end.getSeconds();
+                var ge = hours%10;
+                var shi = parseInt(hours/10);
+                var mge = mins%10;
+                var mshi = parseInt(mins/10);
+                var sge = secs%10;
+                var sshi = parseInt(secs/10);
+                // output.innerHTML = hours+'时' + mins + '分' + secs + '秒';
+                output.innerHTML = '<img src="../images/'+shi+'.png"><img src="../images/'+ge+'.png">'+'时' + '<img src="../images/'+mshi+'.png"><img src="../images/'+mge+'.png">' + '分' + '<img src="../images/'+sshi+'.png"><img src="../images/'+sge+'.png">' + '秒';
+
+                
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>

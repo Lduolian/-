@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            box.id='my';
+            box.name = 'haha';
+            box.innerHTML = 'helloworld';
+
+            box.setAttribute('title','xxx');
+            box.setAttribute('count','100');
+            console.log(box.getAttribute('name'));
+            // box.removeAttribute('title');
+            console.log(box.hasAttribute('name'));
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

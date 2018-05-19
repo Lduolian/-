@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+        求1!+2!+3!+4!+5!…20!
+     */
+    var sum = 0;
+    for(var i = 1; i <= 20; i++){
+        var temp = 1;
+        for(var j = 1; j <= i; j++){
+            temp *= j;
+        }
+        sum += temp;
+    }
+    document.write(sum);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

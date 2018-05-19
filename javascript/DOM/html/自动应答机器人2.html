@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        #box{width: 800px;margin:30px auto;}
+        ul{list-style: none;border:1px solid #ddd;min-height: 200px;overflow:hidden;margin-bottom: 20px;}
+        ul li{float:left;line-height: 30px;font-size: 14px;padding:10px;border-radius: 8px;background:pink;color:white;margin:5px;clear:both;}
+        textarea{display:block;width: 800px;border:1px solid #ddd;min-height: 50px;overflow:hidden;margin-bottom: 10px;}
+        ul .active{float:right;background:orange;}
+    
+    </style>
+    <script type="text/javascript">
+        var q = '你好，你是哪位，一起去玩吧，爬山吗'.split('，');
+        var a = '你好我好大家好，你猜，好啊好啊，走呀'.split('，');
+        window.onload = function(){
+            var box = document.getElementById('box');
+            var ul = box.children[0];
+            var txt = box.children[1];
+            var btn = box.children[2];
+            btn.onclick = function(){
+                _txt = txt.value;
+                var qLi = document.createElement('li');
+                qLi.innerHTML = _txt;
+                qLi.className = 'active';
+                ul.appendChild(qLi);
+                txt.value = '';
+                txt.focus();
+
+                setTimeout(function(){
+                    var idx = q.indexOf(_txt);
+                    var aLi = document.createElement('li');
+                    ul.appendChild(aLi);
+                    if(idx >= 0){
+                        aLi.innerHTML = a[idx];
+                    }else{
+                        aLi.innerHTML='你说什么，我听不见';
+                    }
+                },2000)
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul></ul>
+        <textarea></textarea>
+        <button>提交</button>
+    </div>
+</body>
+</html>

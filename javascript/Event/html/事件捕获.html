@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 200px;height: 200px;background:#f80;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            box.onmouseup = function(){
+                console.log('box');
+            }
+            document.body.onmouseup = function(){
+                console.log('document.body');
+            }
+            document.documentElement.onmouseup = function(){
+                console.log('document.documentElement');
+            }
+            document.onmouseup = function(){
+                console.log('document');
+            }
+            // document.body.onmouseup = function(){
+            //     console.log('document.body2');
+            // }
+           
+            document.documentElement.addEventListener('mouseup',function(){
+                console.log('documentElement2');
+            },true);
+             document.body.addEventListener('mouseup',function(){
+                console.log('body2');
+            },true);
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

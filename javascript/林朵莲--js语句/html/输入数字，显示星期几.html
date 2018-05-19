@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="day" placeholder="输入数字，显示星期几" />
+    <button onclick = "dayDay()">确定</button>
+    <div id="txt"></div>
+    <script type="text/javascript">
+        function dayDay(){
+            var week = document.getElementById('day').value*1;
+            // var week = new Date().getDay();
+            // week = num;
+            if(week == 0){
+                document.getElementById('txt').innerHTML = "今天是星期日";
+            }else if(week == 1){
+                document.getElementById('txt').innerHTML = "今天是星期一";
+            }else if(week == 2){
+                document.getElementById('txt').innerHTML = "今天是星期二";
+            }else if(week == 3){
+                document.getElementById('txt').innerHTML = "今天是星期三";
+
+            }else if(week ==4){
+                document.getElementById('txt').innerHTML = "今天是星期四";
+
+            }else if(week == 5){
+                document.getElementById('txt').innerHTML = "今天是星期五";
+
+            }else{
+                document.getElementById('txt').innerHTML = "今天是星期六";
+
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

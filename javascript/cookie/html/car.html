@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        #carList li{position:relative;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #ddd;}
+        #carList img{display:block;width:100px;}
+        #carList li .btn-close{position:absolute;top:0;right:0;padding:0 5px;cursor:default;}
+        #carList li .btn-close:hover{background-color:#f00;color:#fff;}
+        .subPrice{padding:5px 20px;color:#f00;font-weight:bold;text-align:right;}
+        #carList .price span,.subPrice{color:#f00;}
+        .price span::before,.subPrice::before{
+            content:'￥';
+            font-size:11px;
+        }
+        #carList .price span{font-size:11px;}
+    </style>
+    <script type="text/javascript" src = '../js/comment.js'></script>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var carList = document.getElementById('carList');
+            var subPrice = document.getElementsByClassName('subPrice')[0];
+            var btnClear = document.getElementById('btnClear');
+
+            var goodslist;
+            rander();
+
+            function rander(){
+                var total = 0;
+                goodslist = Cookie.get('goodlist');
+                if(goodslist.length === 0){
+                    goodslist = [];
+                }else{
+                    goodslist= JSON.parse(goodslist);
+                }
+
+                var ul = document.createElement('ul');
+                ul.innerHTML = goodslist.map(function(item){
+
+                    total += item.price * item.qty;
+                    return '<li data-guid = "'+item.guid+'">'+
+                            '<img src="'+item.imgurl+'">'+
+                            '<h4>'+item.name+'</h4>'+
+                            '<p class= "price">价格：<span>'+item.price+'&times;' + item.qty+'</span></p>'+
+                            '<span class = "btn-close">&times;</span>'+
+                            '</li>';
+                }).join("");
+
+                subPrice.innerHTML = total.toFixed(2);
+                carList.innerHTML = '';
+                carList.appendChild(ul);
+            }
+            
+
+
+            btnClear.onclick = function(){
+                Cookie.remove('goodlist');
+                rander();
+                return false;
+            }
+
+            carList.onclick = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+
+                if(target.className === 'btn-close'){
+                    var currentTr = target.parentNode;
+                    var guid = currentTr.getAttribute('data-guid');
+                    for(var i = 0; i < goodslist.length; i++){
+                        if(goodslist[i].guid === guid){
+                            goodslist.splice(i,1);
+                            break;
+                        }
+                    }
+                    Cookie.set('goodlist',JSON.stringify(goodslist));
+                    rander();
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>购物车</h1>
+    <div id="carList">
+        
+    </div>
+    <div class="subPrice"></div>
+    <a href="#" id="btnClear">清空购物车</a>
+</body>
+</html>

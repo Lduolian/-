@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul li{line-height: 30px;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var txt = document.getElementById('txt');
+            var btn = document.getElementById('btn');
+            var list = document.getElementById('list');
+            var news = ['小明由于调戏女老师再次被滚粗教室','iPhone10发布,屏幕高度亮瞎了所有小伙伴','为增加收视率，《跑男》第十季决定邀请香港四大天王参加，但由于年龄太大实在跑不动','为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号'];
+            show();
+
+            btn.onclick = function(){
+                var _txt = txt.value;
+                news.unshift(_txt);
+                show();
+
+            }
+
+            setInterval(function(){
+                news.unshift(news.pop());
+                show();
+            },2000)
+            
+            function show(){
+                var str = '';
+                for(var i = 0; i < news.length; i++){
+                    str += '<li><a href = "#">'+news[i]+'</a></li>'
+                }
+                list.innerHTML = str;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <input type="text" id='txt'/>
+    <button id='btn'>提交</button>
+    <h2>最新消息</h2>
+    <div id="list">
+        
+    </div>
+</body>
+</html>

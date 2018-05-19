@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var person = {};
+        Object.defineProperty(person,"name",{
+            configurable:true,
+            writable:false,
+            enumerable:true,
+            value:'Scott'
+        });
+        var descriptor = Object.getOwnPropertyDescriptor(person,"name");//获取指定属性的属性特性
+        console.log(descriptor.configurable);
+        console.log(descriptor.writable);
+        console.log(descriptor.enumerable);
+        console.log(descriptor.value);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

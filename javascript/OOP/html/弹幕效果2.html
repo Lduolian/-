@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        div,input,button,span{margin:0;padding:0;}
+        .container{width: 820px;margin:0 auto;background:#dfdfdf;padding-bottom: 10px;}
+        #barrage{height: 600px;position:relative;background:#000;margin-bottom: 10px;overflow:hidden;}
+        #barrage .bar-item{position:absolute;left: 100%;white-space: nowrap;}
+        #msg{height: 30px;width: 400px;border:1px solid #999;margin-left: 10px;vertical-align: middle;border-right: 0  none;}
+        #msg+button{height: 30px;padding:0 10px;vertical-align:middle;}
+
+    </style>
+    
+    <script type="text/javascript" src = '../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            let page = {
+                ele:'#barrage',
+                msg:'#msg',
+                
+                init(){
+                    this.ele = document.querySelector(this.ele);
+                    this.msg = document.querySelector(this.msg);
+                    this.btn = this.msg.nextElementSibling;
+
+                    this.btn.onclick = ()=>{
+                        this.send();
+                    }
+                },
+
+                send(){
+                    let _msg = this.msg.value;
+                    new Barrage(_msg);
+                }
+            }
+
+            function Barrage(msg){
+                this.color  = randomColor();
+                this.speed = randomNumber(-20,5);
+                this.size = randomNumber(12,48);
+                this.position = randomNumber(10,page.ele.clientHeight-this.size-10);
+
+                this.init(msg);
+            }
+
+            Barrage.prototype.init = function(msg){
+                this.ele = document.createElement('span');
+                this.ele.innerHTML = msg;
+                this.ele.className = 'bar-item';
+
+                this.ele.style.color = this.color;
+                this.ele.style.fontSize = this.size + 'px';
+                this.ele.style.top = this.position + 'px';
+
+                page.ele.appendChild(this.ele);
+                this.move();
+            }
+
+            Barrage.prototype.move = function(){
+                this.timer = setInterval(()=>{
+                    let left = this.ele.offsetLeft;
+                    left += this.speed;
+                    if(left <= this.ele.clientWidth){
+                        clearInterval(this.timer);
+                        this.remove();
+                    }
+                    this.ele.style.left = left + 'px';
+                },30)
+            }
+
+            Barrage.prototype.remove = function(){
+                this.ele.parentNode.removeChild(this.ele);
+            }
+
+            page.init();
+        })
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="barrage"></div>
+        <input type="text" id="msg" /><button>提交</button>
+    </div>
+</body>
+</html>

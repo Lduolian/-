@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+    
+    .picList {
+        width: 100%;
+        overflow:hidden;
+        font-size:12px;
+    }
+    
+    .picList .col {
+        width: 300px;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        float: left;
+        margin: 10px 0 0 10px;
+    }
+    
+    .picList .col a {
+        position: absolute;
+        width: 280px;
+        height: 180px;
+        top: 160px;
+        background: #000;
+        color: white;
+        line-height: 25px;
+        padding: 10px;
+        opacity: 0.8;
+        text-decoration: none;
+    }
+    </style>
+    <script type="text/javascript" src= '../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            let picList = document.querySelector('#picList');
+            let cols = document.querySelectorAll('.col');
+            for(let i = 0; i < cols.length; i++){console.log(666)
+                cols[i].onmouseenter = function(){
+                    let link =  this.children[1];
+                    clearInterval(this.timer);
+                    this.timer = setInterval(()=>{
+                        let top = link.offsetTop;
+                        let speed = Math.ceil(top/8);
+                        top -= speed;
+                        if(top <=1){
+                            clearInterval(this.timer);
+                        }
+                        link.style.top = top + 'px';
+                    },30)
+                    
+                }
+
+                cols[i].onmouseleave = function(){
+                    let link = this.children[1];
+                    clearInterval(this.timer);
+                    this.timer = setInterval(()=>{
+                        let top = link.offsetTop;
+                        let speed = Math.ceil((160-top)/8);
+                        top += speed;
+                        if(top >= 160){
+                            clearInterval(this.timer);
+                            top = 160;
+                        }
+                        link.style.top = top + 'px';
+                    },30)
+                }
+            }
+        })
+
+    </script>
+</head>
+<body> 
+    <div class='picList' id="picList">
+        <div class="col">
+            <img src="../images/b1.jpg" />
+            <a href="#">学会html5 <br/>
+     本课程由浅入深，逐步推进，以示例为主线，详细完整地介绍HTML5的新功能与新特征
+       </a>
+        </div>
+        <div class="col">
+            <img src="../images/b2.jpg" />
+            <a href="#">圆角水晶按钮制作<br/>
+    网页中的圆角按钮和宽度自适应按钮就这么轻松制作！
+       </a>
+        </div>
+        <div class="col">
+            <img src="../images/b3.jpg" />
+            <a href="#">导航条菜单的制作<br/>
+    30分钟教你轻松制作出各种形式的网站导航条菜单
+       </a>
+        </div>
+    </div>
+</body>
+</html>

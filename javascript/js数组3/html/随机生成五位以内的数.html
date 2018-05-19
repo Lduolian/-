@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+    思路：1.随机生成五位数
+     */
+        var arr = [];
+        var txt = ['万','千','百','十','个'];
+        for(var i = 0; i < 5; i++){
+            arr.push(parseInt(Math.random()*10));
+        }
+        var show = arr.map(function(item,idx){
+            return txt[idx] + '位' + item;
+        })
+        console.log(show);
+        console.log('number:',Number(arr.join('')),'每位分别为： '+show);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

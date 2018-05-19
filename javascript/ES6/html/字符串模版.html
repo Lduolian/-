@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var selt = document.querySelector('#self');
+            var username = 'lili';
+            function intro(){
+                return 'I am a beautiful girl';
+            }
+            selt.innerHTML = `<li>
+                            姓名:${username},
+                            自我介绍：${intro()}
+                            </li>`;
+        })
+
+
+    </script>
+</head>
+<body>
+    <ul id='self'></ul>
+</body>
+</html>

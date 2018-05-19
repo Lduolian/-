@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        // function isLive(arr,n){
+        //     return arr.some(function(item){
+        //         console.log(666);
+        //         return item===n;
+        //     });
+        // }
+        // var a = [12,23,34,45];
+        // var res = isLive(a,45);
+        // console.log(res);
+        // 
+        
+        function isLive(arr,n){
+            return arr.indexOf(n);
+        }
+        var a = [1,23,43,32,45];
+        var res = isLive(a,99);
+        if(res>=0){
+            console.log('存在这个数');
+        }else{
+            console.log('不存在这个数');
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

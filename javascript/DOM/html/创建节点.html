@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var h1 = document.createElement('h1');
+            var text = document.createTextNode('今天天气真好');
+            // var attr = document.createAttribute('name');
+            // attr.nodeValue = 'my';
+            // h1.setAttributeNode(attr);
+            h1.title = "my";
+            h1.appendChild(text);
+            document.body.appendChild(h1);
+            var h2 = document.createElement('h2');
+            h2.innerHTML = '好开心呀好开心啊';
+            document.body.insertBefore(h2,h1);
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

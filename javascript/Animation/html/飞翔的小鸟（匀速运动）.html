@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .bird{position:absolute;left: 0;top: 0;}
+
+    </style>
+    <script type="text/javascript" src = '../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            let bird = document.querySelector('.bird');
+            
+            let speed = 5;
+            let timer = setInterval(() =>{
+                let left = bird.offsetLeft;
+
+                if(left>=window.innerWidth - bird.offsetWidth){
+                    clearInterval(timer);
+                    left = window.innerWidth - bird.offsetWidth - speed;
+                }
+                bird.style.left = left + speed +'px'; 
+            },30)
+
+        })
+
+    </script>
+</head>
+<body>
+    <img src="../images/bird.gif" class = 'bird' />
+</body>
+</html>

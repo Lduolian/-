@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .details{display:none;width: 200px;padding:10px;border:1px solid #f60;background-color:#ffc;position:absolute;}
+        .details::before{
+            content:'';
+            border:10px solid transparent;
+            border-bottom-color:#f60;
+            position:absolute;top:-20px;left:15px;
+        }
+        .details::after{
+            content:'';
+            border:10px solid transparent;
+            border-bottom-color:#ffc;
+            position:absolute;top:-18px;left:15px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var details = document.getElementsByClassName('details')[0];
+            var newslist = document.getElementsByClassName('newslist')[0];
+            var links = newslist.getElementsByTagName('a');
+
+            for(var i = 0; i < links.length; i++){
+                links[i].onmouseover = function(){
+                    details.innerHTML = this.title;
+                    details.style.display = 'block';
+
+                    this.bak = this.title;
+
+                    this.removeAttribute('title');
+                }
+                links[i].onmouseout = function(){
+                    details.style.display = 'none';
+                    this.title = this.bak;
+                }
+                links[i].onmousemove = function(e){
+                    details.style.left = e.clientX-30 + 'px';
+                    details.style.top = e.clientY+30 + 'px';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>新闻提示信息</h1>
+    <ul class="newslist">
+        <li><a href="#" title="小明由于调戏女老师再次被滚粗教室">教室文化</a></li>
+        <li><a href="#" title="iPhone10发布,屏幕高度亮瞎了所有小伙伴">iphone10发布会</a></li>
+        <li><a href="#" title="为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号">关于老王</a></li>
+    </ul>
+    <div class="details"></div>
+</body>
+</html>

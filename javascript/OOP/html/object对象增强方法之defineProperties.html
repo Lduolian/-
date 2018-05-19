@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var person = {};
+        Object.defineProperties(person,{//用于定义多个属性
+            "name":{
+                writable:false,
+                value:'Scott'
+            },
+            "address":{
+                writable:true,
+                value:'beijing'
+            }
+        })
+        person.address = "shanghai";
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

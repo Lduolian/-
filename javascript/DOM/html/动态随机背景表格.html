@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        table{border:1px solid #ddd;border-spacing: 0;border-collapse: collapse;margin:10px;}
+        table td{border:1px solid #ddd;padding:10px;}
+
+    </style>
+    <script type="text/javascript" src='../../comment.js'></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var row = document.getElementById('row');
+            var col = document.getElementById('col');
+            var btn = document.getElementById('btn');
+            var output = document.getElementById('output');
+
+            btn.onclick = function(){
+                var _row = row.value;
+                var _col = col.value;
+                var table = document.createElement('table');
+                for(var i = 0; i < _row; i++){
+                    var tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    
+                    for(var j = 0; j< _col; j++){
+                        var td = document.createElement('td');
+                        td.innerHTML = i + '*' + j + '=' + (i*j);
+                        tr.appendChild(td);
+                        td.style.backgroundColor = random16Color();
+                    }
+                }
+                output.appendChild(table);
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>生成表格</h1>
+    行：<input type="text" id='row'/>
+    列：<input type="text" id='col'/>
+    <button id='btn'>生成表格</button>
+    <div id="output"></div>
+</body>
+</html>

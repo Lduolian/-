@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="month" placeholder="请输入月份" />
+    <button onclick="days()">确定</button>
+    <div id="txt"></div>
+    <script type="text/javascript">
+        function days(){
+            var month = parseInt(document.getElementById('month').value);
+            switch(month){
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    document.getElementById('txt').innerHTML = "这个月有31天";
+                    break;
+                case 2: case 4: case 6: case 9: case 11:
+                    document.getElementById('txt').innerHTML = "这个月有30天";
+                    break;
+                default:
+                    document.getElementById('txt').innerHTML = "输入的数据有误";
+                    break;
+                   
+
+            }
+        }
+
+    </script>
+</body>
+</html>

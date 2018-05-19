@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var box = document.querySelector('.box');
+            console.log(box.className);
+            console.log(box.classList);
+
+            console.log('length',box.classList.length);
+            box.classList.add('name');
+            box.classList.remove('page');
+            console.log(box.classList.contains('box'));
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="box color page">big box</div>
+    <div id="my">hello world</div>
+</body>
+</html>

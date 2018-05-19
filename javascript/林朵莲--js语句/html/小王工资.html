@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var salary = 10000;
+        var total = salary*12;
+        for(var year = 2; year <= 10; year++){
+            salary = salary + salary*0.05;
+            total = total + salary*12;
+        }
+        document.write("十年后的工资" + salary.toFixed(3));
+        document.write('<br />');
+        document.write("十年一共赚得钱" + total.toFixed(3));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

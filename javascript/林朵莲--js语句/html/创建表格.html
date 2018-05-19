@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        table{border:1px;width:500px;border-collapse:collapse;text-align: center;}
+        table td{padding:8px 0;}
+        table tr:nth-child(odd){background:orange;}
+
+    </style>
+</head>
+<body>
+    <label for="hang">行</label>
+    <input type="text" id="hang"/>
+    <label for="lie">列</label>
+    <input type="text" id="lie" />
+    <button onclick="createTable()">创建表格</button>
+    <div id="output"></div>
+    <script type="text/javascript">
+        var hang = document.getElementById('hang');
+        var lie = document.getElementById('lie');
+        var output = document.getElementById('output');        
+        function createTable(){
+            output.innerHTML = '';
+            var str = '<table border=1><tbody>';
+            var h = parseInt(hang.value);
+            var l = parseInt(lie.value);
+            
+            for(var i = 0; i < h; i++){
+                str += '<tr>';
+                for(var j = 0; j < l; j++){
+                    str += '<td>单元格' + i + '*' + j +'</td>';
+                }
+                str += '</tr>';
+            }
+             str += '</tbody></table>';
+
+             output.innerHTML = str;
+        }
+    </script>
+</body>
+</html>

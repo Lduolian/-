@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1" />+<input type="text" id="num2"/>
+    <input type="submit" value="提交" onclick="res()"/>
+    <div class="text" id="txt"></div>
+    <script type="text/javascript">
+        var n1 = document.getElementById("num1");
+        var n2 = document.getElementById('num2');
+        var text = document.getElementById('txt');
+        function res(){
+            var v1 = parseInt(n1.value);
+            var v2 = Number(n2.value);
+            text.innerHTML = v1 + v2;
+        }
+
+    </script>
+</body>
+</html>

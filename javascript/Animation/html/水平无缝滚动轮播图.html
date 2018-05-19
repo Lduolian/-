@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul{list-style: none;margin:0;padding:0;}
+        .focus{position:relative;width: 158px;height: 158px;overflow:hidden;}
+        .focus img{display:block;}
+        .focus ul{position:absolute;overflow:hidden;}
+        .focus ul li{float:left;}
+        .focus .page{position:absolute;right:0;bottom: 0;padding:10px;}
+        .focus .page span{display:inline-block;width: 30px;height: 30px;border-radius: 50%;text-align: center;margin:0 5px;color:#fff;background:rgba(0,0,0,0.6);line-height: 30px;box-shadow: 0,0,10px,rgba(0,0,0,0.5);}
+        .focus .page span.active{background-color: rgba(255,0,0,0.8);}
+
+
+    </style>
+    <script type="text/javascript" src = '../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            let focus = document.getElementsByClassName('focus')[0];
+            let ul = focus.children[0];
+            ul.appendChild(ul.children[0].cloneNode(true));
+
+            let len = ul.children.length;
+            let imgWidth;
+            ul.querySelector('img').onload = function(){
+                imgWidth = this.offsetWidth;
+                ul.style.width = imgWidth*len + 'px';
+            }
+            let timer = setInterval(autoPlay,3000);
+
+            let index = 0;
+
+            let page = document.createElement('div');
+            page.className = 'page';
+            for(let i = 1; i < len; i++){
+                let span = document.createElement('span');
+                span.innerHTML = i;
+
+                if(i===1){
+                    span.classList.add('active');
+                }
+                page.appendChild(span);
+            }
+            focus.appendChild(page);
+
+            focus.onmouseenter = ()=>{
+                clearInterval(timer);
+            }
+            focus.onmouseleave = ()=>{
+                timer = setInterval(autoPlay,3000);
+            }
+
+            focus.onclick = e=>{
+                if(e.target.parentNode.className = 'page'){
+                    index = e.target.innerHTML - 1;
+                    show();
+                }
+            }
+            function autoPlay(){
+                index++;
+                show();
+            }
+
+            function show(){
+                if(index >= len){
+                    ul.style.left = 0;
+                    index = 1;
+                }
+                animate(ul,{left:-imgWidth*index});
+
+                for(let i = 0; i < len-1; i++){
+                    page.children[i].className = '';
+                }
+                if(index === len-1){
+                    page.children[0].className = 'active';
+                }else{
+                    page.children[index].className = 'active';
+                }
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="focus">
+        <ul>
+            <li><img src="../images/001.jpg" alt="" /></li>
+            <li><img src="../images/002.jpg" alt="" /></li>
+            <li><img src="../images/003.jpg" alt="" /></li>
+            <li><img src="../images/004.jpg" alt="" /></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+        选择排序法:
+            把当前元素分别跟后面的元素对比
+            把最小的逐个往前排列
+     */
+        var arr = [12,34,32,21,45,3,65,55,44,88,66,22];
+        for(var i = 0; i < arr.length; i++){
+            for(var j = i+1; j < arr.length; j++){
+                if(arr[i] > arr[j]){
+                    var temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        console.log(arr);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

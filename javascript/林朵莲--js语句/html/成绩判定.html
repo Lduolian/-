@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="score" placeholder="请输入分数"/>
+    <button onclick="results()">判定成绩</button>
+    <div id="txt"></div>
+    <script type="text/javascript">
+        function results(){
+            var score = parseInt(document.getElementById('score').value);
+            if(score<60){
+                document.getElementById('txt').innerHTML = "不及格";
+            }else if(score>=60&&score<75){
+                document.getElementById('txt').innerHTML = "及格";
+            }else if(score>=75&&score<=85){
+                document.getElementById('txt').innerHTML = "良好";
+            }else{
+                document.getElementById('txt').innerHTML = "优秀";
+            }
+        }
+
+    </script>
+</body>
+</html>

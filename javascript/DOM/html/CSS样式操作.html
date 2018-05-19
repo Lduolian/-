@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 300px;height: 100px;border:10px solid orange;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+            box.style.backgroundColor = 'pink';
+            var fs = getComputedStyle(box).fontSize;
+            console.log(fs);
+            var padding = getComputedStyle(box).padding;
+            var border = getComputedStyle(box).border;
+            console.log('padding,',padding);
+            console.log('border:' ,border);
+        }
+        
+
+
+    </script>
+</head>
+<body>
+    <div id="box">css样式操作</div>
+</body>
+</html>

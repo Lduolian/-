@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>全选，不选，反选</title>
+</head>
+<body>
+    <input type="button" id="btn1" value="全选" />
+    <input type="button" id="btn2" value="反选"/>
+    <input type="button" id="btn3" value="不选"/>
+    <div id="course">
+        <input type="checkbox" name="my"/>html
+        <input type="checkbox" name="my"/>javascript
+        <input type="checkbox" name="my"/>css
+        <input type="checkbox" name="my"/>jquery
+    </div>
+
+    <script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+    var allInput = document.getElementsByName('my');
+    btn1.onclick = function(){
+        for(var i = 0; i < allInput.length; i++){
+            allInput[i].checked = true;
+        }
+    }
+
+    btn2.onclick = function(){
+        for(var i = 0; i < allInput.length; i++){
+            if(allInput[i].checked == true){
+                allInput[i].checked = false;
+            }else{
+                allInput[i].checked = true;
+            }
+        }
+    }
+
+    btn3.onclick = function(){
+        for(var i = 0; i< allInput.length; i++){
+            allInput[i].checked = false;
+        }
+    }
+    </script>
+</body>
+</html>

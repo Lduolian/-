@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+       ul{list-style: none;padding:0;margin:0;}
+        .contextMenu{display:none;position:absolute;top:0;left:0;padding:2px;width:220px;background:#f60;color:#fff;}
+        .contextMenu li{position:relative;padding-left:10px;border-bottom:1px dotted #ddd;line-height:2.2;}
+        .contextMenu li:hover{background-color:#f10;}
+        .contextMenu li:last-child{border:none;}
+        .contextMenu li span{position:absolute;right:5px;top:0;color:#999;}
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var contextMenu = document.getElementsByClassName('contextMenu')[0];
+            document.oncontextmenu = function(e){
+                e = e || window.event;
+                if(e.pageX==='undefined'){
+                    e.pageX = e.clientX + window.scrollX;
+                }
+                if(e.pageY === 'undefined'){
+                    e.pageY = e.clientY + window.scrollY;
+                }
+
+                contextMenu.style.left = e.pageX + 'px';
+                contextMenu.style.top = e.pageY + 'px';
+                contextMenu.style.display = 'block';
+
+                e.preventDefault ? e.preventDefault() : returnValue = false;
+            }
+            document.onclick = function(){
+                contextMenu.style.display = 'none';
+            }
+            contextMenu.onclick = function(e){
+                e = e || window.event;
+                e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="contextMenu">
+        <ul>
+            <li>复制<span>Ctrl+C</span></li>
+            <li>粘贴<span>Ctrl+V</span></li>
+            <li>剪切<span>Ctrl+X</span></li>
+            <li>删除<span>Del</span></li>
+            <li>保存<span>Ctrl+S</span></li>
+        </ul>
+    </div>
+</body>
+</html>

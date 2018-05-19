@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <p>价格：￥4998</p>
+    数量：<input type="text" id="num" onkeyup="sum()"/><br />
+    <!-- <button onclick="sum()">click</button><br /> -->
+    总价：<span id="total"></span>
+
+    <script type="text/javascript">
+        function sum(){
+            var val = document.getElementById('num').value*1;
+            // var aa = document.getElementById('total');
+            document.getElementById('total').innerHTML = val * 4998;
+        }
+
+    </script>
+</body>
+</html>

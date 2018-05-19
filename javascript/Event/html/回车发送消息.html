@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .container{width: 800px;margin:0 auto;}
+        ul{list-style: none;padding:10px;min-height: 200px;border:1px solid #ddd;overflow:hidden;}
+        ul li{float:left;clear:both;margin:10px 0;padding:5px;line-height:2;border-radius:5px;background-color:#efefef;}
+        ul li.active{float:right;background-color:#fc0;color:#fff;}
+        textarea{display:block;min-height:50px;margin:10px 0;width:100%;box-sizing: border-box;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var q = '你好,在吗,约吗,十年了还约吗'.split(',');
+            var a = '他好我也好,不是本人,叔叔在哪约,滚'.split(',');
+            var container = document.getElementsByClassName('container')[0];
+            var ul = container.children[1];
+            var area = container.children[2];
+            var btn = container.children[3];
+
+            btn.onclick = function(){
+                handle();
+            }
+
+            function handle(){
+                var _area = area.value;
+                var Qli = document.createElement('li');
+                Qli.innerHTML = _area;
+                Qli.className = 'active';
+                area.value = '';
+                area.focus();
+                ul.appendChild(Qli);
+                setTimeout(function(){
+                var Ali = document.createElement('li');
+                var idx = q.indexOf(_area);
+                if(idx >= 0){
+                    Ali.innerHTML  = a[idx];
+                }else{
+                    Ali.innerHTML = '你说什么，大声点,我听不见';
+                }
+                ul.appendChild(Ali);
+                },1000)    
+            }
+
+            area.onkeyup = function(e){
+                e = e || window.event;
+                if(e.keyCode ==13 && e.ctrlKey == true){
+                     handle();
+                }
+            } 
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>自动应答机器人</h1>
+        <ul></ul>
+        <textarea></textarea>
+        <button>提交</button>
+    </div>
+</body>
+</html>

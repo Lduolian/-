@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .box{width: 200px;background:#ddd;padding:20px;margin:0 auto;}
+        .month{overflow:hidden;text-align: center;}
+        .month div{width: 50px;height: 50px;margin: 8px 8px;background:pink;float:left;}
+        .txt{padding:8px;}
+        .txt div{border:1px solid #fff;background:#999;padding:10px;}
+        .month .active{background:red;color:#fff;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var mDiv = document.getElementsByClassName('month')[0].children;
+            var tDiv = document.getElementsByClassName('txt')[0].children;
+
+            mDiv[0].className = 'active';
+            for(var i = 0; i < mDiv.length; i++){
+                if(i > 0){
+                    tDiv[i].style.display = 'none';
+                }
+                var idx;
+                mDiv[i].onmouseover = function(){
+                    
+                    for(var i = 0; i < mDiv.length; i++){
+                        if(mDiv[i] === this){
+                            idx = i;
+                        }
+                        mDiv[i].className = '';
+                        tDiv[i].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    tDiv[idx].style.display = 'block';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="month">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+        </div>
+        <div class="txt">
+            <div>1月的活动是xxx</div>
+            <div>2月的活动是xxx</div>
+            <div>3月的活动是xxx</div>
+            <div>4月的活动是xxx</div>
+            <div>5月的活动是xxx</div>
+            <div>6月的活动是xxx</div>
+            <div>7月的活动是xxx</div>
+            <div>8月的活动是xxx</div>
+            <div>9月的活动是xxx</div>
+            <div>10月的活动是xxx</div>
+            <div>11月的活动是xxx</div>
+            <div>12月的活动是xxx</div>
+        </div>
+    </div>
+</body>
+</html>

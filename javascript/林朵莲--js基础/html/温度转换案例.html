@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入一个华氏温度" id="huashi"/>
+    <button type="button" onclick="change()">转换</button>
+    <div id="txt"></div>
+    <script type="text/javascript">
+        function change(){
+            var huashi = document.getElementById('huashi').value;
+            var sheshi = 5/9.0*(parseInt(huashi)-32);
+            document.getElementById('txt').innerHTML = "该华氏度转换成摄氏度为" + sheshi;
+        }
+
+    </script>
+</body>
+</html>

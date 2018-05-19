@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var list = document.getElementById('list');
+           console.log('noneType:',list.nodeType);
+           console.log('nodeName:',list.nodeName);
+           console.log('nodeValue:',list.nodeValue);
+
+           // console.log('parentNode',list.parentNode);
+           // console.log('childNodes:',list.childNodes);
+           // console.log('firstChild:',list.firstChild);
+           // console.log('lastChild:',list.lastChild);
+
+           function getChild(elem){
+                var arr = elem.childNodes;
+                var res = [];
+                arr.forEach(function(item){
+                    if(item.nodeType == 1){
+                        res.push(item);
+                    }
+                })
+                return res;
+           }
+            // console.log(getChild(list));
+            //  console.log('previousSibling',list.previousSibling);
+            // console.log('nextSibling',list.nextSibling);
+            var child = list.firstChild.firstChild;
+            console.log(child);
+            console.log('nodeType',child.nodeType);
+            // console.log('nodeName'.child.nodeName);
+            console.log('nodeValue',child.nodeValue);
+        }
+       
+
+    </script>
+</head>
+<body>
+    <h1>DOM学习内容</h1>
+    <div id="list"><a href="#">html</a>
+        <a href="#" class='css'>css</a>
+        <a href="#">javascript</a>
+    </div>
+    <form action="" name = 'myform'></form>
+    
+</body>
+</html>

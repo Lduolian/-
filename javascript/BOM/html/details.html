@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var params = decodeURI(location.search.slice(1));
+            console.log(params);
+
+            var goods = {};
+            params = params.split('&');
+            params.forEach(function(item){
+                var arr = item.split('=');
+                goods[arr[0]] = arr[1];
+            })
+            console.log(goods);
+
+            var pic = document.getElementById('pic');
+            var myname = document.getElementById('myname');
+            var price = document.getElementById('price');
+
+            pic.src = goods.imgurl;
+            myname.innerHTML = goods.name;
+            price.innerHTML = goods.price;
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>商品详情</h1>
+    <div id="details">
+        <img src="" id="pic">
+        <h4 id="myname"></h4>
+        <p>价格：<span id="price"></span></p>
+    </div>
+
+</body>
+</html>

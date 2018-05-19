@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul{list-style: none;}
+        ul li{float:left;padding:0 10px;border:1px solid #ddd;margin-right: 10px;}
+        .price span::before{content:'￥';}
+        span{color:#f90;padding-left: 10px;}
+
+    </style>
+    <script type="text/javascript" src = '../js/comment.js'></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var goods = document.getElementsByClassName('goods')[0];
+            var goodlist = Cookie.get('goodlist') || [];
+
+            if(typeof goodlist ==='string'){
+                goodlist = JSON.parse(goodlist);
+            }
+
+            goods.onclick = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+
+                if(target.parentNode.className === 'add2cart'){
+                    currentTr = target.parentNode.parentNode;
+                    var guid = currentTr.getAttribute('guid');
+
+                    var idx;
+                    var val = goodlist.some(function(item,index){
+                        idx = index;
+                        return guid === item.guid;
+                    })
+
+                    if(val){
+                        goodlist[idx].qty++;
+                    }else{
+                        var good = {
+                            guid:guid,
+                            imgurl:currentTr.children[0].src,
+                            kinds:currentTr.children[1].children[0].innerHTML,
+                            price:currentTr.children[2].children[0].innerHTML,
+                            color:currentTr.children[3].children[0].innerHTML,
+                            qty:1
+                        };
+                        goodlist.push(good);
+                    }
+                   
+                    Cookie.set('goodlist',JSON.stringify(goodlist));
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <ul class = 'goods'>
+        <li guid = 'bag1'>
+            <img src="../images/160.jpg"/>
+            <p>种类:<span>靓女包</span></p>
+            <p class = 'price'>价格:<span>300</span></p>
+            <p>颜色:<span>少女色</span></p>
+            <div class="add2cart">
+                <button>添加到购物车</button>
+            </div>
+        </li>
+        <li guid = 'bag2'>
+            <img src="../images/161.jpg"/>
+            <p>种类:<span>靓女包</span></p>
+            <p class = 'price'>价格:<span>300</span></p>
+            <p>颜色:<span>少女色</span></p>
+            <div class="add2cart">
+                <button>添加到购物车</button>
+            </div>
+        </li>
+        <li guid = 'bag3'>
+            <img src="../images/163.jpg"/>
+            <p>种类:<span>靓女包</span></p>
+            <p class = 'price'>价格:<span>300</span></p>
+            <p>颜色:<span>少女色</span></p>
+            <div class="add2cart">
+                <button>添加到购物车</button>
+            </div>
+        </li>
+        <li guid = 'bag4'>
+            <img src="../images/164.jpg"/>
+            <p>种类:<span>靓女包</span></p>
+            <p class = 'price'>价格:<span>300</span></p>
+            <p>颜色:<span>少女色</span></p>
+            <div class="add2cart">
+                <button>添加到购物车</button>
+            </div>
+        </li>
+    </ul>
+    <a href="bagcar.html">去结算</a>
+</body>
+</html>

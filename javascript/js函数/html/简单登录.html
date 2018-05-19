@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        label{display:inline-block;width: 80px;vertical-align: middle;margin: 10px 0;text-align: right;}
+        input{margin:10px 0;vertical-align: middle;}
+        button{width: 80px;height: 30px;margin-left: 60px;}
+        span{width: 100px;height: 30px;background:#ccc;border:1px solid #000;margin-left: 20px;vertical-align: middle;}
+
+    </style>
+    <script type="text/javascript" src="../../comment.js"></script>
+</head>
+<body>
+    <label for="uname">用户名</label>
+    <input type="text" id="uname" placeholder="请输入用户名"/><br />
+    <label for="upass">密码</label>
+    <input type="password" id="upass" placeholder="请输入密码"/><br />
+    <label for="vcode">验证码</label>
+    <input type="text" id="vcode" placeholder="请输入验证码"/><span id='code'></span><br />
+    <button id='btn'>登录</button>
+
+
+    <script type="text/javascript">
+        var vcode = document.getElementById('vcode');
+        var code = document.getElementById('code');
+        var btn = document.getElementById('btn');
+        createCode();
+        function randomNumber(min, max) {
+            var num = parseInt(Math.random() * (max - min + 1) + min);
+            return num;
+        }
+        function createCode(){
+            code.innerHTML = randomNumber(1000,9999);
+        }
+        code.onclick = function(){
+            createCode();
+        }
+        btn.onclick = function(){
+            if(vcode.value != code.innerHTML){
+                alert('验证码错误');
+            }else{
+                alert('成功登录');
+            }
+        }
+
+
+    </script>
+</body>
+</html>

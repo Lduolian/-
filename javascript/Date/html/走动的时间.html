@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        var output = document.getElementById('output');
+        getTime();
+
+        setInterval(getTime,1000);
+        function getTime(){
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var date = d.getDate();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+
+            hour = hour<10 ? '0' + hour : hour;
+            minutes = minutes<10 ? '0' + minutes : minutes;
+            seconds = seconds<10 ? '0' + seconds : seconds;
+
+            output.innerHTML = year+'年' + month+'月' + date + '日' + hour + ':' + minutes + ':' + seconds
+            // console.log(year+'年' + month+'月' + date + '日' + hour + ':' + minutes + ':' + seconds);
+        }
+        
+
+
+
+    </script>
+</body>
+</html>

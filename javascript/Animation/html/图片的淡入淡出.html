@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+        .box{width:320px;}
+        .box img{display: block;}
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() =>{
+            var box = document.querySelector('.box');
+            box.style.opacity = 0.5;
+            var timer;
+            box.onmouseenter = function(){
+                clearInterval(timer);
+                var target = 10;
+                var current = getComputedStyle(box).opacity*10;
+                timer = setInterval(function(){
+                    var speed = parseInt(current/5);
+                    current += speed;
+                    if(current === target || speed === 0){
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    console.log(current);
+                    box.style.opacity = current/10;
+                },60)
+            }
+
+            box.onmouseleave = function(){
+                clearInterval(timer);
+                var target = 0.5;
+                var current = getComputedStyle(box).opacity;
+                timer = setInterval(function(){
+                    var speed = current/10;
+                    current -= speed;
+                    if(current <= target || speed === 0){
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    console.log(current);
+                    box.style.opacity = current;
+                },60)
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        <img src="../images/g1.jpg"  />
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        div,ul,li,input{margin:0;padding:0;}
+        ul{list-style: none;}
+        #box .output{color:#58bc58;}
+        #box .data{border:1px solid #ddd;width: 300px;margin-top: 10px;display:none;}
+        #box .data li{line-height: 30px;padding:8px 5px;border-bottom: 1px dashed #ddd;}
+        #box .data li .id{float:right;color:#58bc58;}
+        .active{background:#f90;}
+
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var box = document.getElementById('box');
+            var choose = document.getElementById('choose');
+            var output = box.children[2];
+            var data = box.getElementsByClassName('data')[0];
+
+            var news = [{
+                    "name": "北京", 
+                    "id": 110100, 
+                    "hot": true 
+                }, { 
+                    "name": "上海",
+                    "id": 310000,
+                    "hot": true 
+                }, { 
+                    "name": "南京市", 
+                    "id": 320100 
+                }, { 
+                    "name": "广州", 
+                    "id": 440100, 
+                    "hot": true 
+                }, { 
+                    "name": "深圳", 
+                    "id": 440300, 
+                    "hot": true 
+                }, { 
+                    "name": "成都", 
+                    "id": 510100 
+                }, { 
+                    "name": "杭州", 
+                    "id": 330100 
+                }, { 
+                    "name": "南宁", 
+                    "id": 450100 
+                }, { 
+                    "name": "大连", 
+                    "id": 210200 
+                }];
+
+            //根据数据生成列表
+            news = JSON.parse(JSON.stringify(news));
+            var ul = document.createElement('ul');
+            ul.innerHTML = news.map(function(city){
+                return `<li><span>${city.name}</span><span class = 'id'>${city.id}<span></li>`
+            }).join(''); 
+
+            //热门城市高亮显示
+            news.forEach(function(city,index){
+                if(city.hot===true){
+                    
+                    ul.children[index].className = 'active';
+                }
+            })
+            //显示列表到页面上
+            data.appendChild(ul);
+
+
+            //获得焦点显示列表
+            choose.onfocus = function(){
+                data.style.display = 'block';
+            }
+            // 失去焦点隐藏列表
+            // choose.onblur = function(e){
+                
+            //     data.style.display = 'none';
+            //     e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+            // }
+
+            data.onclick = function(e){
+                e = e||window.event;
+                var target = e.target || e.srcElement;
+                if(target.tagName.toLowerCase() ==='li'){
+                    var str = target.children[0].innerHTML;
+                    choose.value = str;
+                    output.innerHTML = '你选择了:' + str;
+                    data.style.display = 'none';
+                }
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <label for="choose">请选择</label>
+        <input type="text" id='choose' />
+        <span class = 'output'></span>
+        <div class="data">
+            
+        </div>
+    </div>
+</body>
+</html>

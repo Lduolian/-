@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var name = 'John';
+        var person = {
+            name:'Scott',
+            showMyName:function(){
+                setTimeout(this.printName.bind(this),1000);
+            },
+            printName:function(){console.log(this)
+                console.log('this is my name ' + this.name);
+            }
+        }
+        person.showMyName();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

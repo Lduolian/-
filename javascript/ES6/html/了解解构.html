@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+       var [name,age,sex] = ['lili','18','girl'];
+       console.log(name,age,sex);
+
+       // var arr = ['name','age','sex'];
+       // arr[0] = 'lili';
+       // arr[1] = '18';
+       // arr[2] = 'girl';
+       // console.log(arr);
+        
+        var {name,age,sex:gender} = {name:'lili',age:18,sex:'girl'};
+        console.log(name,age,gender);
+
+        // var obj = {name:'lili',age:18,sex:'girl'};
+        // console.log(obj.name,obj.age,obj.sex);
+
+        var [name,age,sex='girl'] = ['lili',18]
+        console.log(name,age,sex);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

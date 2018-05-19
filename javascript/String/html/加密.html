@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    对密码进行ascii码加密和解密
+    1.charAt(n)：获取下标为n的字符
+    2.charCodeAt(n)：获取下标为n的字符的ASCII码
+    3.String . fromCharCode(n)：编码转换成字符
+     */
+
+        var str = 'hello world';
+        //加密
+        var arr = [];
+        for(var i = 0; i < str.length; i++){
+            arr[arr.length] = str.charAt(i).charCodeAt();
+        }
+        console.log(arr);//[104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+
+        //解密
+        for(var i = 0; i < arr.length; i++){
+            arr[i] = String(arr[i]);
+            arr[i] = String.fromCharCode(arr[i]);
+        }
+        console.log(arr);//["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+        console.log(arr.join(''));//hello world
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

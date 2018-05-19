@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        body{overflow:hidden;}
+        #box{width: 200px;height: 200px;background:#f40;position:absolute;left:0;top:0;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById('box');
+
+            box.onmousedown = function(e){
+                var ox = e.offsetX;
+                var oy = e.offsetY;
+                document.onmousemove = function(e){
+                    box.style.left = e.pageX-ox + 'px';
+                    box.style.top = e.pageY-oy + 'px';
+                }
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

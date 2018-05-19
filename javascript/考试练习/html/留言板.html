@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul{list-style: none;}
+        .container{width: 1000px;margin:100px auto;}
+        .msgList{min-height: 100px;border:1px solid #ddd;}
+        .msgList ul li{border-bottom: 1px dashed #ddd;padding:0 5px 5px;font-size: 14px;}
+        .msgList ul li span{float: right;color:#ccc;}
+        .container textarea{display: block;min-height:50px;margin: 10px 0;width: 100%;}
+        .container p{text-align: right;}
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            var container = document.querySelector('.container');
+            var msgList = container.children[0];
+            var area = container.children[1];
+            var p = container.children[2];
+            var btn = container.children[3];
+
+            btn.onclick = function(){
+                p.innerHTML = '0/20';
+                send();
+            }
+
+            area.onkeyup = function(e){
+                e = e || window.event;
+                var keyCode = e.keyCode || e.which;
+                if(keyCode === 13 && e.ctrlKey===true){
+                    p.innerHTML = '0/20';
+                    send();
+                }
+            }
+            function send(){
+                var d = new Date();
+                var str = d.getFullYear() + '-' + d.getMonth() + 1 +'-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                var msg = {content:area.value,time:str}
+                var ul = document.createElement('ul');
+                var li = document.createElement('li');
+                li.innerHTML = msg.content + '<span>'+msg.time + '</span>';
+                ul.appendChild(li);
+                msgList.appendChild(ul);
+                area.value = '';
+                area.focus();
+            }
+            area.oninput = function(){
+                var len = area.value.length;
+                if(len > 20){
+                    alert('你输入字数过多');
+                    return false;
+                }
+                p.innerHTML = len + '/20';
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="msgList">
+        
+        </div>
+        <textarea></textarea>
+        <p>0/20</p>
+        <button>提交</button>
+    </div>
+    
+</body>
+</html>

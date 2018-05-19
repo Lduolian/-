@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        table{border:1px solid #ccc;border-collapse: collapse;margin-top:10px;}
+        table td{border:1px solid #ccc;padding:10px;}
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var row = document.getElementById('row');
+            var col = document.getElementById('col');
+            var btn = document.getElementsByClassName('btn')[0];
+            var output = document.getElementById('output');
+
+
+            btn.onclick = function(){
+                var _row = row.value;
+                var _col = col.value;
+                var table = createTable(_row,_col);
+                output.innerHTML = '';
+                output.appendChild(table);
+            }
+
+            output.onclick = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+
+                if(target.className === 'delBtn'){
+                    var currentTr = target.parentNode.parentNode;
+                    currentTr.parentNode.removeChild(currentTr);
+                }
+                if(target.className === 'copyBtn'){
+                    var currentTr = target.parentNode.parentNode;
+                    currentTr.parentNode.appendChild(currentTr.cloneNode(true));
+                }
+            }
+
+            function createTable(r,c){
+                var table = document.createElement('table');
+
+                for(var i = 0; i < r; i++){
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    td.innerHTML = i+1;
+                    tr.appendChild(td);
+                    for(var j = 0; j < c; j++){
+                        var td = document.createElement('td');
+                        td.innerHTML = i + '*' + j + '=' + i*j;
+                        tr.appendChild(td);
+                    }
+
+                    var del = document.createElement('button');
+                    var copy = document.createElement('button');
+                    del.innerHTML = '删除';
+                    copy.innerHTML = '复制';
+                    del.className = 'delBtn';
+                    copy.className = 'copyBtn';
+                    var Td = document.createElement('td');
+                    Td.appendChild(del);
+                    Td.appendChild(copy);
+                    tr.appendChild(Td);
+
+                    table.appendChild(tr);
+                }
+                return table;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>生成表格</h1>
+    行：<input type="text" id='row'/>
+    列：<input type="text" id='col'/>
+    <button class='btn'>生成表格</button>
+    <div id="output"></div>
+</body>
+</html>

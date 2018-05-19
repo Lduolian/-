@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        .container{padding:20px;}
+        button{border:0 none;background: #ddd;font-size: 14px;line-height: 30px;margin-right: 10px;padding:5px;}
+        .detail{width: 300px;height: 200px;background:#f90;}
+        .detail p{padding:10px 5px;width: 300px;height: 200px;}
+        .active{background:#f90;}
+        p.a{background:red;}
+        p.b{background:pink;}
+        p.c{background:yellow;}
+        p.d{background:green;}
+
+    </style>
+    <script type="text/javascript" src='../../comment.js'></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            var btn = document.querySelector('.btn');
+            var detail = document.querySelector('.detail');
+            var btn_s = btn.children;
+            var detail_s = detail.children;
+            // var number = createCode();
+
+            // detail_s[0].innerHTML = number;
+            for(var i =0; i < detail_s.length; i++){
+                detail_s[i].innerHTML = createCode();
+            }
+            function createCode(){
+                var num = randomNumber(1,100);
+                return num;
+                console.log(num);
+            }
+
+            btn_s[0].className = 'active';
+            for(var i = 0; i < btn_s.length; i++){
+
+                if(i>0){
+                    detail_s[i].style.display = 'none';
+                }
+                btn_s[i].onmouseover = function(){
+                    var idx;
+                    for(var j = 0; j < btn_s.length; j++){
+                        if(btn_s[j] === this){
+                            idx = j;
+                        }
+                        btn_s[j].className = '';
+                        detail_s[j].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    detail_s[idx].style.display = 'block';
+                }
+            }
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="btn">
+            <button>篮球</button>
+            <button>足球</button>
+            <button>羽毛球</button>
+            <button>乒乓球</button>
+        </div>
+        
+        <div class="detail">
+            <p class='a'>篮球很激烈，我是科比，我痴迷于篮球运动</p>
+            <p class='b'>足球更激烈，我是C罗，我热爱足球的狂热</p>
+            <p class='c'>羽毛球很文艺，我是林丹，卫冕舍我其谁</p>
+            <p class='d'>乒乓球更文艺，我是张继科，我为乒乓球代言</p>
+        </div>
+    </div>
+</body>
+</html>

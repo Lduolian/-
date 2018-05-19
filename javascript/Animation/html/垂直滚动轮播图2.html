@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul{list-style: none;margin:0;padding:0;}
+        .lunbotu{position:relative;width: 320px;height: 320px;overflow:hidden;}
+        .lunbotu ul{position:absolute;top:0;left: 0;}
+        .lunbotu img{display:block;}
+
+    </style>
+    
+    <script type="text/javascript" src='../../comment.js'></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            let lbt = document.querySelector('.lunbotu');
+            let ul = lbt.children[0];
+            let imgHeight;
+            ul.querySelector('img').onload = function(){
+                imgHeight = this.offsetHeight;
+            }
+
+            let timer = setInterval(autoPlay,3000);
+            let index = 0;
+            let len = ul.children.length;
+            function autoPlay(){
+                index++;
+                
+                if(index>=len){
+                    index = 0;
+                }
+                let target = -imgHeight * index;
+
+                animate(ul,'top',target);
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="lunbotu">
+        <ul>
+            <li><img src="../images/g1.jpg" alt="" /></li>
+            <li><img src="../images/g2.jpg" alt="" /></li>
+            <li><img src="../images/g3.jpg" alt="" /></li>
+            <li><img src="../images/g4.jpg" alt="" /></li>
+            <li><img src="../images/g5.jpg" alt="" /></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        ul li{line-height: 30px;}
+        span{color:#999;font-size: 12px;padding-left: 10px;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var txt = document.getElementById('txt');
+            var btn = document.getElementById('btn');
+            var list = document.getElementById('list');
+
+            var arrNews = [{
+            title:'小明由于调戏女老师再次被滚粗教室',
+            time:'2016/10/1'
+            },{
+                title:'iPhone10发布,屏幕高度亮瞎了所有小伙伴',
+                time:'2016/10/10'
+            },{
+                title:'为增加收视率，《跑男》第十季决定邀请香港四大天王参加，但由于年龄太大实在跑不动',
+                time:'2017/1/1'
+            },{
+                title:'为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号',
+                time:'2015/11/11'
+            }];
+            append();
+
+            btn.onclick = function(){
+                var obj = {title:txt.value,time:new Date().toLocaleDateString()};
+                arrNews.unshift(obj);
+                append();
+                txt.value = '';
+                txt.focus();
+            }
+
+            setInterval(function(){
+                arrNews.unshift(arrNews.pop());
+                append();
+            },2000)
+
+            function append(){
+                var str = '';
+                arrNews.forEach(function(item,idx){ 
+                    str += '<li><a href = "#">' +item.title+'</a><span>'+item.time+'</span></li>'
+                })
+                list.innerHTML = str;
+            }
+            
+        }
+
+
+    </script>
+</head>
+<body>
+    <input type="text" id='txt'/>
+    <button id='btn'>提交</button>
+    <h2>最新消息</h2>
+    <ul id='list'></ul>
+</body>
+</html>

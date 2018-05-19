@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #box{width: 500px;height: 500px;border:1px solid #ccc;}
+
+    </style>
+    <script type="text/javascript" src="../../comment.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        var box = document.getElementById('box');
+        change();
+        function change(){
+            box.style.backgroundColor = randomColor();
+        }
+        box.onclick = change;
+
+
+    </script>
+</body>
+</html>

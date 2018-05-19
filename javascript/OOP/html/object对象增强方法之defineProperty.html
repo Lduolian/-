@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        "use strict";
+        var person = {};
+        Object.defineProperty(person,"name",{
+            value:'Scott',
+            writable:true,//该属性为true才可以修改值
+            configurable:true//该属性为true才可以删除属性
+        })
+
+        person.name = 'John';
+        delete person.name;
+
+        var student = {};
+        Object.defineProperty(student,"name",{
+            enumerable:true,//该属性为true时对象属性才可以被遍历
+            value:'Sala'
+        });
+        for(var key in student){
+            if(student.hasOwnProperty(key)){
+                console.log(key + ':' + student[key]);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+        快速排序法
+            利用递归实现
+        思路：1.每次都取数组的中间的那个数，然后分成大于中间值
+                和小于中间值的数组，直到数组就剩下一个数时把数组
+                拼接在一起
+     */
+        var arr = [10, 8, 20, 5, 6, 30, 11, 9];
+        function fastSort(arr){
+            if(arr.length <= 1){
+                return arr;
+            }
+            var cIdx = parseInt(arr.length/2);
+            var arrLt = [];
+            var arrGt = [];
+            var cItem = arr.splice(cIdx,1);
+            for(var i = 0; i < arr.length; i++){
+                if(arr[i]>cItem[0]){
+                    arrGt.push(arr[i]);
+                }else{
+                    arrLt.push(arr[i]);
+                }
+            }
+            return fastSort(arrLt).concat(cItem,fastSort(arrGt));
+        }
+        console.log(fastSort(arr));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

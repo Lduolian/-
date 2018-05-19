@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var url = decodeURI(location.search.slice(1));
+            var str = url.split('&');
+            var obj = {};
+            str.forEach(function(item){
+                var arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            })
+            console.log(obj);
+            var pic = document.getElementById('pic');
+            var p = document.getElementById('price');
+            pic.src = obj.imgurl;
+            p.innerHTML = obj.price;
+        })
+
+    </script>
+</head>
+<body>
+    <img src="" id='pic' />
+    <p id='price'></p>
+</body>
+</html>

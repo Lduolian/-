@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="score" />
+    <button onclick = 'results()'>成绩判定</button>
+    <div id="output"></div>
+    <script type="text/javascript">
+        var s = document.getElementById('score');
+        var output = document.getElementById('output');
+        function results(){
+            var score = s.value*1;//string->number
+            switch(true){
+                case score>85:
+                    output.innerHTML = '优秀';
+                    break;
+                case score >= 75&&score<=85:
+                    output.innerHTML = '良好';
+                    break;
+                case score >=60&&score<75:
+                    output.innerHTML ='及格';
+                    break;
+                case score<60:
+                    output.innerHTML='不及格';
+                    break;
+                default :
+                    output.innerHTML = '输入的数据有误';
+            }
+        }
+    </script>
+</body>
+</html>

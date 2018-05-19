@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var box = document.querySelector('#box');
+            console.log(box.dataset.name);
+            console.log(box.dataset.borderWidth);
+        })
+
+    </script>
+</head>
+<body>
+    <div id="box" data-name = 'bigBox' data-color = "orange" data-border-width = "10">hello world</div>
+</body>
+</html>

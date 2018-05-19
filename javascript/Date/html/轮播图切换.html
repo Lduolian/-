@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .box{position:relative;width: 320px;height: 320px;}
+        .pic{position:absolute;top: 0;left: 0;}
+
+    </style>
+    <script type="text/javascript">
+    /*
+        轮播图切换
+     */
+        document.addEventListener('DOMContentLoaded',function(){
+            var box = document.querySelector('.box');
+            var imgs = box.getElementsByClassName('pic')[0];
+            var btnStop = document.querySelector('.btnStop');
+            var btnCon = document.querySelector('.btnCon');
+            var index = 0;
+            var timer = setInterval(function(){
+                index++;
+                imgs.src = `../images/g${index}.jpg`;
+                if(index>=5){
+                    index = 0;
+                }
+            },1000)
+
+            btnStop.onclick = function(){
+                clearInterval(timer);
+            }
+
+            btnCon.onclick = function(){
+                timer = setInterval(function(){
+                index++;
+                imgs.src = `../images/g${index}.jpg`;
+                if(index>=5){
+                    index = 0;
+                }
+            },1000)
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        <img src="../images/g1.jpg" alt="" class="pic" />
+        
+    </div>
+    <button class="btnStop">暂停</button>
+    <button class="btnCon">继续</button>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        var o = Object.create(null);
+        console.log(o);         //{}
+        o.name = "lele";
+        var o1 = Object.create(o);
+        console.log(o1);    //{}
+        console.log(o1.name);   //lele
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

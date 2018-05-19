@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .pic{width: 600px;margin:100px auto;}
+        .pic img{width: 100px;height: 100px;border:1px solid #ddd;padding:5px;}
+        /*#box{border:1px solid #ccc;padding:5px;display:none;width: 360px;height: 360px;}*/
+        #box img{width: 350px;height: 350px;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var picImg = document.getElementsByClassName('pic')[0].children;
+            var box = document.getElementById('box');
+            for(var i =0; i < picImg.length; i++){
+                picImg[i].onmouseover = function(){
+                    console.log(this);
+                    var img = document.createElement('img');
+                    img.src = this.src;
+                    box.appendChild(img);
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="pic">
+        <img src="../images/small_1.jpg"/>
+        <img src="../images/small_2.jpg"/>
+        <img src="../images/small_3.jpg"/>
+        <img src="../images/small_4.jpg"/>
+    </div>
+    <div id="box"></div>
+</body>
+</html>

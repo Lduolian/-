@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        .hide{display:none;}
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var btn = document.querySelector('button');
+            var img = document.querySelector('img');
+
+            btn.onclick = function(){
+                // if(img.classList.contains('hide')){
+                //     img.classList.remove('hide');
+                // }else{
+                //     img.classList.add('hide');
+                // }
+                img.classList.toggle('hide');
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div>
+        <button>显示隐藏</button>
+    </div>
+    <img src="../images/g1.jpg" height="320" width="320" alt="" />
+</body>
+</html>

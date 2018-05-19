@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id='num1'/>
+    <input type="text" id='num2'/>
+    <button id='btn'>确定</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        /*
+        编写一个函数，计算任意两个数字之间所能组成的奇数个数，参数数字必须是个位数
+            比如： 计算0-3之间能组成的奇数是01、21、03、13、23、31
+            不能单个数字本身进行组合，如11,33
+            思路：1.先找出两个数中的最小数
+                  2.从最小数开始循环，外层循环控制十位数，依次和每一个数组合
+                  3.内层循环控制个位数，组合的数是奇数的话就count++
+         */
+        var num1 = parseInt(document.getElementById('num1').value);
+        var num2 = parseInt(document.getElementById('num2').value);
+        var btn = document.getElementById('btn');
+        var output = document.getElementById('output');
+
+       function get(m,n){
+        var t = 0;
+        if(m>n){
+            t = n;
+            n = m;
+            m = t;
+        }
+        var count = 0;
+        for(var i = m; i <= n; i++){
+            for(var j = m; j <= n; j++){
+                if(i == j){
+                    continue;
+                }
+                if((i*10+j) % 2 !=0){
+                    console.log(i*10+j);
+                    count++
+                }
+            }
+        }
+         return count;
+       }
+        output.innerHTML = get(0,3);
+    </script>
+</body>
+</html>

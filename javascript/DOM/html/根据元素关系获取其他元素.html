@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var list  = document.getElementById('list');
+            var child  = list.parentElement;
+            console.log(child);
+            console.log(list.children);
+            console.log(list.firstElementChild);
+            console.log(list.lastElementChild);
+            console.log(list.previousElementSibling);
+            console.log(list.nextElementSibling);
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>DOM学习内容</h1>
+    <div id="list"><a href="#">html</a>
+        <a href="#" class='css'>css</a>
+        <a href="#">javascript</a>
+    </div>
+    <form action="" name = 'myform'></form>
+</body>
+</html>

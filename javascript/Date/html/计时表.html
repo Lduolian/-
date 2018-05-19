@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id='timetext' value='00时00分00秒' readonly="readonly" />
+    <button onclick = 'start()'>开始</button><button onclick = 'pause()'>暂停</button><button onclick = 'reset()'>重置</button>
+
+    <script type="text/javascript">
+       var hour,minute,secend;
+       hour = minute = secend = 0;
+       // var millisecend = 0;
+       var inti;
+       function start(){
+            inti = setInterval(timer,1000); 
+       }
+       function timer(){
+            // millisecend = millisecend + 50;
+            // if(millisecend >=1000){
+            //     millisecend = 0;
+            //     secend += 1;
+            // }
+            secend += 1;
+            if(secend >=60){
+                secend = 0;
+                minute += 1;
+            }
+            if(minute >= 60){
+                minute = 0;
+                hour += 1;
+            }
+            document.getElementById('timetext').value = hour + '时' + minute +'分' + secend + '秒';
+       }
+       function pause(){
+            clearInterval(inti);
+       }
+       function reset(){
+            clearInterval(inti);
+            hour = minutes = secend = 0;
+            document.getElementById('timetext').value = '0时0分0秒';
+
+       }
+
+
+    </script>
+</body>
+</html>

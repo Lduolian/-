@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*找出以下数组中所有小于10的元素并组成一个新的数组
+    filter(item,index,array):得到执行fn后返回true时
+    对应的数组元素，利用这个方法可对数组元素进行过滤筛选
+     */
+        var arr = [10,15,2,32,5,4,20,8,48,54,6];
+        var array = [];
+        // for(var i = 0; i < arr.length; i++){
+        //     if(arr[i]<10){
+        //         array.push(arr[i]);
+        //     }
+        // }
+        array = arr.filter(item=>{
+            return item<10;
+        })
+        console.log(array);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

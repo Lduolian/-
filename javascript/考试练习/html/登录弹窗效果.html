@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        .form{width: 300px;border:1px solid #ddd;padding:10px 10px;position:absolute;display:none;}
+        .form h4{line-height: 30px;border-bottom: 1px solid #ddd;position: relative;}
+        .form h4 span{display:block;width: 15px;height: 15px;position:absolute;top: 0;right: 0;cursor:default;}
+        .txt{padding-top:20px;}
+
+    
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            var login = document.getElementById('login');
+            var form = document.getElementsByClassName('form')[0];
+            var h4 = form.firstElementChild;
+            var close_btn = h4.firstElementChild;
+            var username = document.getElementById('username');
+            var userpass = document.getElementById('userpass');
+            var subBtn = document.getElementById('subBtn');
+            var output1 = document.getElementById('output1');
+            var output2 = document.getElementById('output2');
+            var checkbox = document.getElementById('checkbox');
+
+            login.onclick = function(){
+                form.style.display = 'block';
+                autoCenter();
+
+            }
+
+            window.onresize = function(){
+                autoCenter();
+            }
+            function autoCenter(){
+                form.style.left = (window.innerWidth - form.offsetWidth)/2 + 'px';
+                form.style.top = (window.innerHeight - form.offsetHeight)/2 + 'px';
+            }
+            h4.onmousedown = function(e){
+                e = e || window.event;
+                var ox = e.clientX - form.offsetLeft;
+                var oy = e.clientY - form.offsetTop;
+                document.onmousemove = function(evt){
+                    evt = evt || window.event;
+                    form.style.left = evt.clientX - ox + 'px';
+                    form.style.top = evt.clientY - oy + 'px';
+                    evt.preventDefault ? evt.preventDefault():evt.cancelBubble = true;
+                }
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+
+            close_btn.onclick = function(){
+                form.style.display = 'none';
+            }
+            document.onkeyup = function(e){
+                e = e|| window.event;
+                if(e.keyCode===27){
+                    form.style.display = 'none';
+                }
+            }
+            if(!checkbox.checked){
+                    subBtn.disabled = true;
+            }
+            setInterval(function(){
+                if(checkbox.checked){
+                    subBtn.disabled = false;
+                }
+                if(!checkbox.checked){
+                    subBtn.disabled = true;
+                }
+            },100)
+            subBtn.onclick = function(){
+                var _username = username.value;
+                var _userpass = userpass.value;
+
+                if(!/^[a-z][\da-z]{5,11}$/i.test(_username)){
+                   output1.innerHTML = '用户名不合法';
+                   username.value = '';
+                   username.focus();
+                    return false;
+                }else{
+                    output1.innerHTML = '';
+                }
+                if(!/^\w{6,18}$/.test(_userpass)){
+                    output2.innerHTML = '密码输入不合法';
+                    userpass.value = '';
+                    userpass.focus();
+                    return false;
+                }else{
+                    output2.innerHTML = '';
+                }
+                document.cookie = 'username=' + _username;
+                location.href = 'success.html';
+            }
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <p>你好，欢迎来到国家信息安全系统，<a href = '#' id = 'login'>请先登录</a></p>
+    <div class = 'form'>
+        <h4>注册登录<span class = 'close'>&times;</span></h4>
+        
+        <div class="txt">
+            <label for="username">用户名</label>
+            <input type="text" id = 'username'/><br />
+            <div id="output1"></div>
+            <label for="userpass">密码</label>
+            <input type="password" id = 'userpass' /><br />
+            <div id="output2"></div>
+            <input type="checkbox" id = 'checkbox'/>同意<a href = '#'>保密协议</a><br />
+            <button id='subBtn'>提交</button>
+        </div>
+        
+    </div>
+</body>
+</html>

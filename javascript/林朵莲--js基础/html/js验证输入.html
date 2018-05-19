@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <p>请输入数字，如果输入的不是数字或者为空都会弹出提示框</p>
+    <input type="text" id="num" />
+    <script type="text/javascript">
+    function isNum(){
+        var x = document.getElementById("num").value;
+        if(x==""||isNaN(x)){
+            alert("不是数字");
+        }
+    }
+
+    </script>
+    <button type="button" onclick="isNum()">提交</button>
+</body>
+</html>

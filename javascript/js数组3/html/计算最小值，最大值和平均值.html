@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    分别计算出以上数组的最大值，最小值和平均值，并输出他们的索引
+     */
+        var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+        var max = arr[0];
+        var maxIdx = 0;
+        arr.forEach(function(item,idx){
+            if(item>max){
+                max  = item;
+                maxIdx = idx;
+            }
+        })
+        console.log('最大值为' + max,'索引值为：' + maxIdx);
+
+
+        var min = arr[0];
+        var minIdx = 0;
+        arr.forEach(function(item,idx){
+            if(item<min){
+                min  = item;
+                minIdx = idx;
+            }
+        })
+        console.log('最小值为' + min,'索引值为：' + minIdx);
+
+        var sum = arr.reduce(function(prev,cur){
+            return prev+cur;
+        },0)
+        console.log('平均值为'+(sum/arr.length) );
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

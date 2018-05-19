@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        Person.prototype = {
+            say(){
+                console.log(`hello,I am ${this.name},I want to make friends With you`);
+            },
+            eat(){}
+        }
+
+        Object.defineProperty(Person.prototype,'constructor',{
+            configurable:true,
+            writable:true,
+            value:Person
+        })
+
+        function Man(name,age){
+
+        }
+
+        var stu1 = new Person("lili",18,"女");
+        var stu2 = new Person("xing",20,"男");
+
+        Man.prototype = new Person();
+        var man = new Man("lin",10);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

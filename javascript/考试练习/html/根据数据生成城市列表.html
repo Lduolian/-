@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        a{text-decoration: none;}
+        ul{list-style: none;}
+        .container{width: 1000px;margin:100px auto;border:1px solid #ccc;overflow:hidden;}
+        .title{background:#ddd;overflow: hidden;padding:0 10px;color:#000;}
+        .title h3 span{float: right;font-size: 14px;}
+        .title h3 span a{color:#000;}
+        .tab1{height: 50px;background:#cca;padding:10px;}
+        .tab1 li{float:left;margin:5px 8px;border:1px solid #000;border-radius: 4px;padding:3px;}
+
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',() => {
+            var tab1 = document.querySelector('.tab1');
+            var cities = [{city:'北京',guid:440111},{city:'上海',guid:440222},{city:'广州',guid:440333},{city:'深圳',guid:440555},{city:'香港',guid:440666},{city:'澳门',guid:440888}]
+            // var arr = [{city:'南京市',guid:330111},{city:'成都',guid:330222},{city:'杭州',guid:330333},{city:'南宁',guid:330555},{city:'大连',guid:330666}]
+
+            tab1.innerHTML = cities.map(function(item){
+                return `<li>${item.city}</li>`
+            }).join('');
+        })
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h3>城市列表<span><a href="#">更多</a></span></h3>
+        </div>
+        <ul class = 'tab1'></ul>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript">
+        if(!String.prototype.trim){
+            String.prototype.trim = function(){
+
+            }
+        }
+
+        if(!String.prototype.ascii){
+            String.prototype.ascii = function(str){
+                var res = '';
+                for(var i = 0; i < str.length; i++){
+                    res += str.charCodeAt(i) + ' ';
+                }
+                res = res.slice(0,-1);
+                return res;
+            }
+        }
+
+        if(!String.prototype.decodeAscii){
+            String.prototype.decodeAscii = function(str){
+                var arr = str.split(' ');
+                // arr = arr.map(item=>{
+                //     return String.fromCharCode(item);
+                // })
+
+                for(var i = 0; i < arr.length; i++){
+                    arr[i] = String.fromCharCode(arr[i]);
+                }
+                return arr.join('');
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

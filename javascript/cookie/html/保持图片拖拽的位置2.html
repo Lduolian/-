@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        #pic{width: 200px;height: 200px;position:absolute;left: 0;top: 0;}
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var pic = document.getElementById('pic');
+
+            pic.onmousedown = function(e){
+                e = e || window.event;
+                var ox = e.offsetX;
+                var oy = e.offsetY;
+
+                document.onmousemove = function(evt){
+                    evt = evt || window.event;
+                    pic.style.left = evt.pageX - ox + 'px';
+                    pic.style.top = evt.pageY -oy + 'px';
+                    evt.preventDefault();
+                }
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.cookie = 'left=' + pic.style.left;
+                document.cookie = 'top=' + pic.style.top;
+                
+            }
+
+            var cookies = document.cookie;
+            cookies = cookies.split('; ');
+            for(var i = 0; i < cookies.length; i++){
+                var arr = cookies[i].split('=');
+                if(arr[0]==='left' || arr[0]==='top'){
+                    pic.style[arr[0]] = arr[1];
+                    pic.style[arr[0]] = arr[1];
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <img src="../images/g3.jpg" id = 'pic' />
+</body>
+</html>

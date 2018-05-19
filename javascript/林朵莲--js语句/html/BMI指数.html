@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>BMI指数测试</h1>
+    身高<input type="text" id="height" placeholder="请输入身高，单位m"/><br />
+    体重<input type="text" id="weight" placeholder="请输入体重，单位kg"/><br />
+    <button onclick = "test()">测试</button>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        function test(){
+            var h = document.getElementById('height').value*1;
+            var w = document.getElementById('weight').value*1;
+            var output = document.getElementById('output');
+            var stand = w / (h*h);
+            if(stand <18.5){
+                output.innerHTML = "体重过轻";
+            }else if(stand>=18.5 && stand<=24.99){
+                output.innerHTML="正常";
+            }else if(stand>=25 && stand<=28){
+                output.innerHTML = "过重";
+            }else if(stand>=28 && stand<=32){
+                output.innerHTML = "肥胖";
+            }else{
+                output.innerHTML = "非常肥胖";
+            }
+        }
+
+    </script>
+</body>
+</html>
